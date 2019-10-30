@@ -84,7 +84,6 @@ Route::resource('daftar_siswa', 'DaftarSiswaController')->middleware('auth');
 Route::resource('daftar_prestasi', 'DaftarPrestasiController')->middleware('auth');
 Route::resource('blog_siswa', 'BlogSiswaController')->middleware('auth');
 
-
 //User Biasa
 //Tentang Asrama
 Route::get('tentang_asrama/visimisi', 'TentangAsramaController@visimisi');

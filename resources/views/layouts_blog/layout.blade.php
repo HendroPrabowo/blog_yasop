@@ -110,14 +110,24 @@
       <!-- <p class="m-0 text-center text-white">Copyright &copy; 2019 Yayasan Soposurung Balige. All right reserved</p> -->
       <div class="row">
           <div class="col-md-3">
-
+              <a href="google.com" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px" src="{{ asset('image/logo/Facebook.png') }}"> Facebook</a><br/>
+              <a href="google.com" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px; background:white;" src="{{ asset('image/logo/Logo-TBSC-01.png') }}"> TB Silalahi Center</a>
           </div>
           <div class="col-md-6">
               <p class="m-0 text-center text-white">Copyright &copy; 2019 Yayasan Soposurung Balige. All right reserved</p>
               <div class="row">
-                  <div class="col-md-2"></div>
+                  <div class="col-md-2">
+
+                  </div>
                   <div class="col-md-8">
-                      <table class="table">
+                    <style>
+                        table, th, td {
+                        padding: 10px;
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+                    </style>
+                      <table>
                           <tr>
                               <td width="10%"><img src="{{ asset('image/logo/logo_blog.png') }}" alt=""></td>
                               <td class="text-white">
