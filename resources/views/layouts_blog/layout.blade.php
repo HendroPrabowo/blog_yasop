@@ -110,8 +110,8 @@
       <!-- <p class="m-0 text-center text-white">Copyright &copy; 2019 Yayasan Soposurung Balige. All right reserved</p> -->
       <div class="row">
           <div class="col-md-3">
-              <a href="google.com" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px" src="{{ asset('image/logo/Facebook.png') }}"> Facebook</a><br/>
-              <a href="google.com" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px; background:white;" src="{{ asset('image/logo/Logo-TBSC-01.png') }}"> TB Silalahi Center</a>
+              <a href="{{ URL::to('https://www.facebook.com/AsramaYayasanSoposurung/') }}" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px" src="{{ asset('image/logo/Facebook.png') }}"> Facebook</a><br/>
+              <a href="{{ URL::to('http://www.tbsilalahicenter.com/') }}" style="font-family: Raleway, Open Sans, sans-serif;  color:white; font-size:15px"><img style="height:40px; weight:40px; margin-bottom:10px; background:white;" src="{{ asset('image/logo/Logo-TBSC-01.png') }}"> TB Silalahi Center</a>
           </div>
           <div class="col-md-6">
               <p class="m-0 text-center text-white">Copyright &copy; 2019 Yayasan Soposurung Balige. All right reserved</p>

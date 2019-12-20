@@ -6,8 +6,6 @@
 
 @section('breadcrumb_list')
 <li><a href="#">Dashboard</a></li>
-<li><a href="#">UI Elements</a></li>
-<li class="active">Badges</li>
 @endsection
 
 @section('content')
