@@ -17,7 +17,7 @@
             <strong>Edit</strong> Kategori
         </div>
         <div class="card-body card-block">
-            <form action="/kategori/{{ $kategori->id }}" method="post" class="form-horizontal">
+            <form action="{{ url('/kategori/'.$kategori->id) }}" method="post" class="form-horizontal">
                 @csrf
                 @method('PUT')
                 <div class="row form-group mb-2">

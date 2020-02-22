@@ -11,7 +11,7 @@
 @section('content')
     <h3>Semua Postingan</h1>
 
-    <a href="/post/create" class="btn btn-primary">Tambah Postingan</a>
+    <a href="{{ url('/post/create') }}" class="btn btn-primary">Tambah Postingan</a>
 
     <table class="table table-striped table-bordered" style="margin-top: 10px">
         <thead>
@@ -42,8 +42,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="/post/{{ $value->id }}/edit" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
-                        <form method="post" action="/post/{{ $value->id }}">
+                        <a href="{{ url('/post/'.$value->id.'/edit') }}" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
+                        <form method="post" action="{{ url('/post/'.$value->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="submit" class="btn btn-danger fa fa-trash fa-lg">

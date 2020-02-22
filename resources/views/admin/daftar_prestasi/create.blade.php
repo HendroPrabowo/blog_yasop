@@ -21,7 +21,7 @@
 @section('content')
     <h3>Daftar Pretasi</h1>
         <div class="card-body card-block">
-            <form action="/daftar_prestasi" method="post">
+            <form action="{{ url('/daftar_prestasi') }}" method="post">
                 @csrf
                 @error('prestasi')
                     <div class="alert alert-danger">{{ $message }}</div>

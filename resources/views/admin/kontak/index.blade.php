@@ -13,9 +13,9 @@
         <h3>Kontak</h3>
     </div>
     @if(is_null($kontak))
-    <a href="/kontak/create" class="btn btn-success" style="margin: 10px 0px">Tambah Kontak</a>
+    <a href="{{ url('/kontak/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Kontak</a>
     @else
-    <a href="/kontak/{{ $kontak->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Kontak</a>
+    <a href="{{ url('/kontak/'.$kontak->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Kontak</a>
 
     <div class="row">
         <div class="col-md-12">

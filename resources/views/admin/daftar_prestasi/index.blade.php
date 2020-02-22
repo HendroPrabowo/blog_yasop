@@ -13,7 +13,7 @@
         <h3>Daftar Prestasi</h3>
     </div>
 
-    <a href="daftar_prestasi/create" class="btn btn-success" style="margin: 10px 0px">Tambah Prestasi</a>
+    <a href="{{ url('daftar_prestasi/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Prestasi</a>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,8 +38,8 @@
                     <td>{{ $value->siswa }}</td>
                     <td>{{ $value->berita }}</td>
                     <td>
-                        <a href="/daftar_prestasi/{{ $value->id }}/edit" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
-                        <form method="post" action="/daftar_prestasi/{{ $value->id }}">
+                        <a href="{{ url('/daftar_prestasi/'.$value->id.'/edit') }}" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
+                        <form method="post" action="{{ url('/daftar_prestasi/'.$value->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="submit" class="btn btn-danger fa fa-trash fa-lg">

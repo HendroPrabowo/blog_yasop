@@ -21,7 +21,7 @@
 @section('content')
     <h3>Daftar Siswa</h1>
         <div class="card-body card-block">
-            <form action="/daftar_siswa" method="post">
+            <form action="{{ url('/daftar_siswa') }}" method="post">
                 @csrf
 
                 @error('no_induk')

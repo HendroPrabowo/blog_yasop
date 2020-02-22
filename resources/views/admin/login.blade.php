@@ -20,7 +20,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-b-20">
-				<form method="post" class="login100-form validate-form" action="/login">
+				<form method="post" class="login100-form validate-form" action="{{ url('/login') }}">
 					@csrf
 
 					<!-- @error('email')

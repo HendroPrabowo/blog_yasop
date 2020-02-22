@@ -18,7 +18,7 @@
             <strong>Tambah</strong> Kategori
         </div>
         <div class="card-body card-block">
-            <form action="/kategori" method="post" class="form-horizontal">
+            <form action="{{ url('/kategori') }}" method="post" class="form-horizontal">
                 @csrf
                 <div class="row form-group mb-2">
                     <div class="col col-md-8">
@@ -49,8 +49,8 @@
                     <td>{{ $i }}</td>
                     <td>{{ $value->kategori }}</td>
                     <td>
-                        <a href="/kategori/{{ $value->id }}/edit" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
-                        <form method="post" action="/kategori/{{ $value->id }}">
+                        <a href="{{ url('/kategori/'.$value->id.'/edit') }}" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
+                        <form method="post" action="{{ url('/kategori/'.$value->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="submit" class="btn btn-danger fa fa-trash fa-lg">

@@ -21,7 +21,7 @@
 @section('content')
     <h3>Daftar Blog Siswa</h1>
         <div class="card-body card-block">
-            <form action="/blog_siswa" method="post">
+            <form action="{{ url('/blog_siswa') }}" method="post">
                 @csrf
 
                 @error('nama')

@@ -13,9 +13,9 @@
         <h3>Visi Misi</h3>
     </div>
     @if(is_null($visimisi))
-    <a href="/visimisi/create" class="btn btn-success" style="margin: 10px 0px">Tambah Visi Misi</a>
+    <a href="{{ url('/visimisi/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Visi Misi</a>
     @else
-    <a href="/visimisi/{{ $visimisi->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Visi Misi</a>
+    <a href="{{ url('/visimisi/'.$visimisi->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Visi Misi</a>
 
     <div class="row">
         <div class="col-md-12">

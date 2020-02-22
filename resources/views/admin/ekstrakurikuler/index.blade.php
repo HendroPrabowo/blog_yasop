@@ -13,9 +13,9 @@
         <h3>Ekstrakurikuler</h3>
     </div>
     @if(is_null($ekstrakurikuler))
-    <a href="/ekstrakurikuler/create" class="btn btn-success" style="margin: 10px 0px">Tambah Ekstrakurikuler</a>
+    <a href="{{ url('/ekstrakurikuler/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Ekstrakurikuler</a>
     @else
-    <a href="/ekstrakurikuler/{{ $ekstrakurikuler->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Ekstrakurikuler</a>
+    <a href="{{ url('/ekstrakurikuler/'.$ekstrakurikuler->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Ekstrakurikuler</a>
 
     <div class="row">
         <div class="col-md-12">

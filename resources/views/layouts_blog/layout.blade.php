@@ -43,51 +43,51 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tentang Asrama</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/tentang_asrama/visimisi">Visi Misi</a>
-                        <a class="dropdown-item" href="/tentang_asrama/sejarah">Sejarah</a>
-                        <a class="dropdown-item" href="/tentang_asrama/pendiri">Pendiri</a>
-                        <a class="dropdown-item" href="/tentang_asrama/lokasi">Lokasi</a>
-                        <a class="dropdown-item" href="/tentang_asrama/kontak">Kontak</a>
+                        <a class="dropdown-item" href="{{ url('/tentang_asrama/visimisi') }}">Visi Misi</a>
+                        <a class="dropdown-item" href="{{ url('/tentang_asrama/sejarah') }}">Sejarah</a>
+                        <a class="dropdown-item" href="{{ url('/tentang_asrama/pendiri') }}">Pendiri</a>
+                        <a class="dropdown-item" href="{{ url('/tentang_asrama/lokasi') }}">Lokasi</a>
+                        <a class="dropdown-item" href="{{ url('/tentang_asrama/kontak') }}">Kontak</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pamong</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pamong/kepala_asrama">Kepala Asrama</a>
-                        <a class="dropdown-item" href="/pamong/staf_pengajar">Staf Pengajar (Guru)</a>
-                        <a class="dropdown-item" href="/pamong/staf_pembina">Staf Pembina</a>
-                        <a class="dropdown-item" href="/pamong/staf_pendukung">Staf Pendukung</a>
-                        <a class="dropdown-item" href="/pamong/struktur_organisasi">Struktur Organisasi</a>
+                        <a class="dropdown-item" href="{{ url('/pamong/kepala_asrama') }}">Kepala Asrama</a>
+                        <a class="dropdown-item" href="{{ url('/pamong/staf_pengajar') }}">Staf Pengajar (Guru)</a>
+                        <a class="dropdown-item" href="{{ url('/pamong/staf_pembina') }}">Staf Pembina</a>
+                        <a class="dropdown-item" href="{{ url('/pamong/staf_pendukung') }}">Staf Pendukung</a>
+                        <a class="dropdown-item" href="{{ url('/pamong/struktur_organisasi') }}">Struktur Organisasi</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fasilitas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/fasilitas/akomodasi">Akomodasi</a>
-                        <a class="dropdown-item" href="/fasilitas/belajar">Belajar</a>
-                        <a class="dropdown-item" href="/fasilitas/praktikum">Praktikum</a>
-                        <a class="dropdown-item" href="/fasilitas/kesehatan">Kesehatan</a>
-                        <a class="dropdown-item" href="/fasilitas/it">IT</a>
-                        <a class="dropdown-item" href="/fasilitas/olahraga">Olahraga</a>
-                        <a class="dropdown-item" href="/fasilitas/sosial">Sosial</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/akomodasi') }}">Akomodasi</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/belajar') }}">Belajar</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/praktikum') }}">Praktikum</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/kesehatan') }}">Kesehatan</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/it') }}">IT</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/olahraga') }}">Olahraga</a>
+                        <a class="dropdown-item" href="{{ url('/fasilitas/sosial') }}">Sosial</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kegiatan</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/kegiatan/rutinitas">Rutinias</a>
-                        <a class="dropdown-item" href="/kegiatan/ekstrakurikuler">Extrakurikuler</a>
-                        <a class="dropdown-item" href="/kegiatan/minatbakat">Minta-Bakat</a>
-                        <a class="dropdown-item" href="/kegiatan/lainnya">Lainnya</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/rutinitas') }}">Rutinias</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/ekstrakurikuler') }}">Extrakurikuler</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/minatbakat') }}">Minta-Bakat</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/lainnya') }}">Lainnya</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kesiswaan</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/kesiswaan/organisasi_siswa">Organisasi Siswa</a>
-                        <a class="dropdown-item" href="/kesiswaan/daftar_siswa">Daftar Siswa</a>
-                        <a class="dropdown-item" href="/kesiswaan/daftar_prestasi">Data Prestasi</a>
-                        <a class="dropdown-item" href="/kesiswaan/blog_siswa">Blog Siswa</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/organisasi_siswa') }}">Organisasi Siswa</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_siswa') }}">Daftar Siswa</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_prestasi') }}">Data Prestasi</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/blog_siswa') }}">Blog Siswa</a>
                     </div>
                 </li>
                 <li class="nav-item">

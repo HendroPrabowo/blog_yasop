@@ -13,9 +13,9 @@
         <h3>Praktikum</h3>
     </div>
     @if(is_null($praktikum))
-    <a href="/praktikum/create" class="btn btn-success" style="margin: 10px 0px">Tambah Praktikum</a>
+    <a href="{{ url('/praktikum/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Praktikum</a>
     @else
-    <a href="/praktikum/{{ $praktikum->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Praktikum</a>
+    <a href="{{ url('/praktikum/'.$praktikum->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Praktikum</a>
 
     <div class="row">
         <div class="col-md-12">

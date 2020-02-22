@@ -13,9 +13,9 @@
         <h3>Pendiri</h3>
     </div>
     @if(is_null($pendiri))
-    <a href="/pendiri/create" class="btn btn-success" style="margin: 10px 0px">Tambah Pendiri</a>
+    <a href="{{ url('/pendiri/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Pendiri</a>
     @else
-    <a href="/pendiri/{{ $pendiri->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Pendiri</a>
+    <a href="{{ url('/pendiri/'.$pendiri->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Pendiri</a>
 
     <div class="row">
         <div class="col-md-12">

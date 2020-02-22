@@ -21,7 +21,7 @@
 @section('content')
     <h3>Struktur Organisasi</h1>
         <div class="card-body card-block">
-            <form action="/struktur_organisasi/{{ $struktur_organisasi->id }}" method="post">
+            <form action="{{ url('/struktur_organisasi/'.$struktur_organisasi->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 @error('struktur_organisasi')

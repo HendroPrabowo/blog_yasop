@@ -13,7 +13,7 @@
         <h3>Daftar Siswa</h3>
     </div>
 
-    <a href="daftar_siswa/create" class="btn btn-success" style="margin: 10px 0px">Tambah Siswa</a>
+    <a href="{{ url('daftar_siswa/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Siswa</a>
 
     <div class="row">
         <div class="col-md-12">
@@ -38,8 +38,8 @@
                     <td>{{ $value->nama }}</td>
                     <td>{{ $value->kelas }}</td>
                     <td>
-                        <a href="/daftar_siswa/{{ $value->id }}/edit" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
-                        <form method="post" action="/daftar_siswa/{{ $value->id }}">
+                        <a href="{{ url('/daftar_siswa/'.$value->id.'/edit') }}" class="btn btn-primary fa fa-pencil fa-lg" style="float: left"></a>
+                        <form method="post" action="{{ url('/daftar_siswa/'.$value->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="submit" class="btn btn-danger fa fa-trash fa-lg">

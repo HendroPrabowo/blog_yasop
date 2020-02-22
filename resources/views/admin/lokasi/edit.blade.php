@@ -21,7 +21,7 @@
 @section('content')
     <h3>Lokasi</h1>
         <div class="card-body card-block">
-            <form action="/lokasi/{{ $lokasi->id }}" method="post">
+            <form action="{{ url('/lokasi/'.$lokasi->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 @error('lokasi')

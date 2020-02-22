@@ -13,9 +13,9 @@
         <h3>Staf Pendukung</h3>
     </div>
     @if(is_null($staf_pendukung))
-    <a href="/staf_pendukung/create" class="btn btn-success" style="margin: 10px 0px">Tambah Staf Pendukung</a>
+    <a href="{{ url('/staf_pendukung/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Staf Pendukung</a>
     @else
-    <a href="/staf_pendukung/{{ $staf_pendukung->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Staf Pendukung</a>
+    <a href="{{ url('/staf_pendukung/'.$staf_pendukung->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Staf Pendukung</a>
 
     <div class="row">
         <div class="col-md-12">

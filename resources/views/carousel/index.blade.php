@@ -20,7 +20,7 @@
             <strong>Tambah</strong> Carousel
         </div>
         <div class="card-body card-block">
-            <form action="/carousel" method="post" class="form-horizontal">
+            <form action="{{ url('/carousel') }}" method="post" class="form-horizontal">
                 @csrf
                 <div class="form-group">
                     <label>Postingan</label>
@@ -51,7 +51,7 @@
             <tr>
                 <td>{{ $value->post->judul }}</td>
                 <td>
-                    <form method="post" action="/carousel/{{ $value->id }}">
+                    <form method="post" action="{{ url('/carousel/'.$value->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" name="submit" class="btn btn-danger fa fa-trash fa-lg">

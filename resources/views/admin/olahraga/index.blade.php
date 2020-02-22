@@ -13,9 +13,9 @@
         <h3>Olahraga</h3>
     </div>
     @if(is_null($olahraga))
-    <a href="/olahraga/create" class="btn btn-success" style="margin: 10px 0px">Tambah Olahraga</a>
+    <a href="{{ url('/olahraga/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Olahraga</a>
     @else
-    <a href="/olahraga/{{ $olahraga->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Olahraga</a>
+    <a href="{{ url('/olahraga/'.$olahraga->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Olahraga</a>
 
     <div class="row">
         <div class="col-md-12">

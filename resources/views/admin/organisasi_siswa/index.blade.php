@@ -13,9 +13,9 @@
         <h3>Organisasi Siswa</h3>
     </div>
     @if(is_null($organisasi_siswa))
-    <a href="/organisasi_siswa/create" class="btn btn-success" style="margin: 10px 0px">Tambah Organisasi Siswa</a>
+    <a href="{{ url('/organisasi_siswa/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Organisasi Siswa</a>
     @else
-    <a href="/organisasi_siswa/{{ $organisasi_siswa->id }}/edit" class="btn btn-success" style="margin: 10px 0px">Edit Organisasi Siswa</a>
+    <a href="{{ url('/organisasi_siswa/'.$organisasi_siswa->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Organisasi Siswa</a>
 
     <div class="row">
         <div class="col-md-12">

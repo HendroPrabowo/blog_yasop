@@ -1,7 +1,7 @@
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img style="width:40px" src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}" alt="Logo"> Yayasan Soposurung</a>
+            <a class="navbar-brand" href="{{ url('/') }}"><img style="width:40px" src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}" alt="Logo"> Yayasan Soposurung</a>
             <!-- <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> -->
         </div>
     </div>
@@ -12,7 +12,7 @@
                     <img style="width:40px" src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}" alt="Yasop">&nbsp;Admin
                 </a>
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                    <a class="nav-link" href="{{ url('/logout') }}"><i class="fa fa-power-off"></i>Logout</a>
                 </div>
             </div>
         </div>

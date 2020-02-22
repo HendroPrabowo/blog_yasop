@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
                     <div class="col-md-9">
                         <h4 class="card-title">{{ $value->judul }}</h4>
                         <p class="card-text elipsis"><?php echo strip_tags($value->posting); ?></p>
-                        <a href="/lihat/{{ $value->id }}" class="btn btn-primary"><span class="fa fa-eye"></span>&nbsp;Lihat</a>
+                        <a href="{{ url('/lihat/'.$value->id) }}" class="btn btn-primary"><span class="fa fa-eye"></span>&nbsp;Lihat</a>
                     </div>
                 </div>
             </div>
@@ -30,9 +30,9 @@ use Illuminate\Support\Str;
     <div class="col-md-2 card text-center">
         <h3>Kategori</h3>
         <ul class="list-group">
-            <a href="/kategori/0/kategori"><li class="list-group-item">Tak Berkategori</li></a>
+            <a href="{{ url('/kategori/0/kategori') }}"><li class="list-group-item">Tak Berkategori</li></a>
             @foreach($kategori_all as $value)
-            <a href="/kategori/{{ $value->id }}/kategori"><li class="list-group-item">{{ $value->kategori }}</li></a>
+            <a href="{{ url('/kategori/'.$value->id.'/kategori') }}"><li class="list-group-item">{{ $value->kategori }}</li></a>
             @endforeach
         </ul>
     </div>

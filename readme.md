@@ -1,4 +1,19 @@
-<div style="text-align: center">
-    <h1>Blog Yayasan Soposurung</h1>
-    <img src="https://pbs.twimg.com/profile_images/3559272665/3f899c272f3f036a5c1631b8b4f228f6_400x400.png" width="100px" height="100px">
-</div>
+# Blog Yayasan Soposurung
+![](https://pbs.twimg.com/profile_images/3559272665/3f899c272f3f036a5c1631b8b4f228f6_400x400.png)
+
+# How to use
+- Clone the project
+- Composer install or composer update
+- Migrate the db with php artisan migrate
+- Link storage laravel with php artisan
+- Create new user from register router
+- Run
+
+# Reference Link in URL
+```sh
+<h1>URL : {{ url("/home") }}</h1>
+<h1>Route : {{ route('post.index') }}</h1>
+<h1>Route : {{ route('post.show', ['id' => 1]) }}</h1>
+<h1>Action : {{ action('PostController@home') }}</h1>
+<a href='{{ action("TentangAsramaController@visimisi") }}'>Link</a>
+```

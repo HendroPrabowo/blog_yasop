@@ -15,7 +15,7 @@
 @endsection
 
 @section('breadcrumb_list')
-<li><a href="/post">Postingan</a></li>
+<li><a href="{{ url('/post') }}">Postingan</a></li>
 <li class="active">Tambah Postingan</li>
 @endsection
 
@@ -25,7 +25,7 @@
             <strong>Tambah</strong> Postingan
         </div>
         <div class="card-body card-block">
-            <form action="/post" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/post') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="judul">Judul</label>

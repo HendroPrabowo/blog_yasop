@@ -89,7 +89,7 @@ class PendiriController extends Controller
         ]);
 
         $pendiri = Pendiri::find($id);
-        $pendiri->sejarah = $request->pendiri;
+        $pendiri->pendiri = $request->pendiri;
         $pendiri->save();
         return redirect()->action('PendiriController@index');
     }
