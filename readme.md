@@ -7,6 +7,7 @@
 - Migrate the db with php artisan migrate
 - Link storage laravel with php artisan
 - Create new user from register router
+- Dont forget to commet register routes, so user cannot create new admin account (Can create new account if user forgot the password)
 - Run
 
 # Reference Link in URL
