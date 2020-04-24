@@ -34,7 +34,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #660000">
     <div class="container">
-      <a class="navbar-brand" href="/"><img src="{{ asset('image\logo\yayasan_soposurung_logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">  Yayasan Soposurung</a>
+      <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('image\logo\yayasan_soposurung_logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">  Yayasan Soposurung</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

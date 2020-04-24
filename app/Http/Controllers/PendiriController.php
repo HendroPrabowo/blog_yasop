@@ -49,6 +49,14 @@ class PendiriController extends Controller
             'pendiri' => $request->pendiri
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $pendiri->id.'.pendiri.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/pendiri/', $imageName);
+            $pendiri->gambar = 'pendiri/'.$imageName;
+            $pendiri->save();
+        }
+
         return redirect()->action('PendiriController@index');
     }
 
@@ -91,6 +99,15 @@ class PendiriController extends Controller
         $pendiri = Pendiri::find($id);
         $pendiri->pendiri = $request->pendiri;
         $pendiri->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $pendiri->id.'.pendiri.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/pendiri/', $imageName);
+            $pendiri->gambar = 'pendiri/'.$imageName;
+            $pendiri->save();
+        }
+
         return redirect()->action('PendiriController@index');
     }
 

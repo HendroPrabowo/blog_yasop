@@ -49,6 +49,14 @@ class SejarahController extends Controller
             'sejarah' => $request->sejarah
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $sejarah->id.'.sejarah.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/sejarah/', $imageName);
+            $sejarah->gambar = 'sejarah/'.$imageName;
+            $sejarah->save();
+        }
+
         return redirect()->action('SejarahController@index');
     }
 
@@ -91,6 +99,15 @@ class SejarahController extends Controller
          $sejarah = Sejarah::find($id);
          $sejarah->sejarah = $request->sejarah;
          $sejarah->save();
+
+         if($request->gambar != null) {
+             $file = $request->file('gambar');
+             $imageName = $sejarah->id.'.sejarah.'.$file->getClientOriginalExtension();
+             $path = $request->file('gambar')->storeAs('public/sejarah/', $imageName);
+             $sejarah->gambar = 'sejarah/'.$imageName;
+             $sejarah->save();
+         }
+
          return redirect()->action('SejarahController@index');
      }
 

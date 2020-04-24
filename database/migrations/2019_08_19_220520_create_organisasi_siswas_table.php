@@ -16,6 +16,7 @@ class CreateOrganisasiSiswasTable extends Migration
         Schema::create('organisasi_siswa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

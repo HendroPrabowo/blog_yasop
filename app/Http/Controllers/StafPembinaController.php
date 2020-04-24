@@ -33,6 +33,14 @@ class StafPembinaController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pembina->id.'.staf_pembina.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pembina/', $imageName);
+            $staf_pembina->gambar = 'staf_pembina/'.$imageName;
+            $staf_pembina->save();
+        }
+
         return redirect()->action('StafPembinaController@index');
     }
 
@@ -56,6 +64,15 @@ class StafPembinaController extends Controller
         $staf_pembina = StafPembina::find($id);
         $staf_pembina->text = $request->text;
         $staf_pembina->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pembina->id.'.staf_pembina.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pembina/', $imageName);
+            $staf_pembina->gambar = 'staf_pembina/'.$imageName;
+            $staf_pembina->save();
+        }
+
         return redirect()->action('StafPembinaController@index');
     }
 

@@ -33,6 +33,14 @@ class KepalaAsramaController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $kepala_asrama->id.'.kepala_asrama.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/kepala_asrama/', $imageName);
+            $kepala_asrama->gambar = 'kepala_asrama/'.$imageName;
+            $kepala_asrama->save();
+        }
+
         return redirect()->action('KepalaAsramaController@index');
     }
 
@@ -56,6 +64,15 @@ class KepalaAsramaController extends Controller
         $kepala_asrama = KepalaAsrama::find($id);
         $kepala_asrama->text = $request->text;
         $kepala_asrama->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $kepala_asrama->id.'.kepala_asrama.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/kepala_asrama/', $imageName);
+            $kepala_asrama->gambar = 'kepala_asrama/'.$imageName;
+            $kepala_asrama->save();
+        }
+
         return redirect()->action('KepalaAsramaController@index');
     }
 

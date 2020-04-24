@@ -16,6 +16,7 @@ class CreateLainnyasTable extends Migration
         Schema::create('lainnya', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

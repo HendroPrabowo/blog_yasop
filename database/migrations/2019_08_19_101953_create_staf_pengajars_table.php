@@ -16,6 +16,7 @@ class CreateStafPengajarsTable extends Migration
         Schema::create('staf_pengajar', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

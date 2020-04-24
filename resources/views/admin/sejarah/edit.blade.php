@@ -19,9 +19,9 @@
 @endsection
 
 @section('content')
-    <h3>Sejarah</h1>
+    <h3>Sejarah</h3>
         <div class="card-body card-block">
-            <form action="{{ url('/sejarah/'.$sejarah->id) }}" method="post">
+            <form action="{{ url('/sejarah/'.$sejarah->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 @error('sejarah')
@@ -31,6 +31,13 @@
                     <label for="posting">Sejarah</label>
                     <textarea name="sejarah" rows=15 class="form-control" id="mytextarea" required>{{ $sejarah->sejarah }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="gambar">Gambar</label>
+                    <input type="file" name="gambar" value="{{ old('gambar') }}" class="form-control">
+                </div>
+                @error('gambar')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <input type="submit" name="submit" value="Edit" combak class="btn btn-success">
             </form>
         </div>

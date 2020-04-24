@@ -33,6 +33,14 @@ class StafPendukungController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pendukung->id.'.staf_pendukung.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pendukung/', $imageName);
+            $staf_pendukung->gambar = 'staf_pendukung/'.$imageName;
+            $staf_pendukung->save();
+        }
+
         return redirect()->action('StafPendukungController@index');
     }
 
@@ -56,6 +64,15 @@ class StafPendukungController extends Controller
         $staf_pendukung = StafPendukung::find($id);
         $staf_pendukung->text = $request->text;
         $staf_pendukung->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pendukung->id.'.staf_pendukung.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pendukung/', $imageName);
+            $staf_pendukung->gambar = 'staf_pendukung/'.$imageName;
+            $staf_pendukung->save();
+        }
+
         return redirect()->action('StafPendukungController@index');
     }
 

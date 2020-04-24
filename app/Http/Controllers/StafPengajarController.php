@@ -33,6 +33,14 @@ class StafPengajarController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pengajar->id.'.staf_pengajar.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pengajar/', $imageName);
+            $staf_pengajar->gambar = 'staf_pengajar/'.$imageName;
+            $staf_pengajar->save();
+        }
+
         return redirect()->action('StafPengajarController@index');
     }
 
@@ -56,6 +64,15 @@ class StafPengajarController extends Controller
         $staf_pengajar = StafPengajar::find($id);
         $staf_pengajar->text = $request->text;
         $staf_pengajar->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $staf_pengajar->id.'.staf_pengajar.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/staf_pengajar/', $imageName);
+            $staf_pengajar->gambar = 'staf_pengajar/'.$imageName;
+            $staf_pengajar->save();
+        }
+
         return redirect()->action('StafPengajarController@index');
     }
 

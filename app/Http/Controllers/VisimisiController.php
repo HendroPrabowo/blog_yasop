@@ -49,6 +49,14 @@ class VisimisiController extends Controller
             'visimisi' => $request->visimisi
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $visimisi->id.'.visimisi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/visimisi/', $imageName);
+            $visimisi->gambar = 'visimisi/'.$imageName;
+            $visimisi->save();
+        }
+
         return redirect()->action('VisimisiController@index');
     }
 
@@ -91,6 +99,15 @@ class VisimisiController extends Controller
         $visimisi = Visimisi::find($id);
         $visimisi->visimisi = $request->visimisi;
         $visimisi->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $visimisi->id.'.visimisi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/visimisi/', $imageName);
+            $visimisi->gambar = 'visimisi/'.$imageName;
+            $visimisi->save();
+        }
+
         return redirect()->action('VisimisiController@index');
     }
 

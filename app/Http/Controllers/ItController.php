@@ -33,6 +33,14 @@ class ItController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $it->id.'.it.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/it/', $imageName);
+            $it->gambar = 'it/'.$imageName;
+            $it->save();
+        }
+
         return redirect()->action('ItController@index');
     }
 
@@ -56,6 +64,15 @@ class ItController extends Controller
         $it = It::find($id);
         $it->text = $request->text;
         $it->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $it->id.'.it.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/it/', $imageName);
+            $it->gambar = 'it/'.$imageName;
+            $it->save();
+        }
+
         return redirect()->action('ItController@index');
     }
 

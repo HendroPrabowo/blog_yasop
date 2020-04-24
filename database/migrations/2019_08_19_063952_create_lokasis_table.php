@@ -16,6 +16,7 @@ class CreateLokasisTable extends Migration
         Schema::create('lokasi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('lokasi');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

@@ -33,6 +33,14 @@ class StrukturOrganisasiController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $struktur_organisasi->id.'.struktur_organisasi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/struktur_organisasi/', $imageName);
+            $struktur_organisasi->gambar = 'struktur_organisasi/'.$imageName;
+            $struktur_organisasi->save();
+        }
+
         return redirect()->action('StrukturOrganisasiController@index');
     }
 
@@ -56,6 +64,15 @@ class StrukturOrganisasiController extends Controller
         $struktur_organisasi = StrukturOrganisasi::find($id);
         $struktur_organisasi->text = $request->text;
         $struktur_organisasi->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $struktur_organisasi->id.'.struktur_organisasi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/struktur_organisasi/', $imageName);
+            $struktur_organisasi->gambar = 'struktur_organisasi/'.$imageName;
+            $struktur_organisasi->save();
+        }
+
         return redirect()->action('StrukturOrganisasiController@index');
     }
 

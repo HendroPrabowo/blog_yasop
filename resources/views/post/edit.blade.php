@@ -25,7 +25,7 @@
             <strong>Tambah</strong> Postingan
         </div>
         <div class="card-body card-block">
-            <form action="/post/{{ $post->id }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/post/'.$post->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">

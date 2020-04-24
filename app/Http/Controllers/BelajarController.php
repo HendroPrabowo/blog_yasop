@@ -33,6 +33,14 @@ class BelajarController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $belajar->id.'.belajar.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/belajar/', $imageName);
+            $belajar->gambar = 'belajar/'.$imageName;
+            $belajar->save();
+        }
+
         return redirect()->action('BelajarController@index');
     }
 
@@ -56,6 +64,15 @@ class BelajarController extends Controller
         $belajar = Belajar::find($id);
         $belajar->text = $request->text;
         $belajar->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $belajar->id.'.belajar.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/belajar/', $imageName);
+            $belajar->gambar = 'belajar/'.$imageName;
+            $belajar->save();
+        }
+
         return redirect()->action('BelajarController@index');
     }
 

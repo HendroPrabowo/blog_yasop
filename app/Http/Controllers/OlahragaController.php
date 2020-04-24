@@ -33,6 +33,14 @@ class OlahragaController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $olahraga->id.'.olahraga.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/olahraga/', $imageName);
+            $olahraga->gambar = 'olahraga/'.$imageName;
+            $olahraga->save();
+        }
+
         return redirect()->action('OlahragaController@index');
     }
 
@@ -56,6 +64,15 @@ class OlahragaController extends Controller
         $olahraga = Olahraga::find($id);
         $olahraga->text = $request->text;
         $olahraga->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $olahraga->id.'.olahraga.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/olahraga/', $imageName);
+            $olahraga->gambar = 'olahraga/'.$imageName;
+            $olahraga->save();
+        }
+
         return redirect()->action('OlahragaController@index');
     }
 

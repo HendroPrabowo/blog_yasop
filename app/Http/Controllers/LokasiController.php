@@ -49,6 +49,14 @@ class LokasiController extends Controller
             'lokasi' => $request->lokasi
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $lokasi->id.'.lokasi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/lokasi/', $imageName);
+            $lokasi->gambar = 'lokasi/'.$imageName;
+            $lokasi->save();
+        }
+
         return redirect()->action('LokasiController@index');
     }
 
@@ -91,6 +99,15 @@ class LokasiController extends Controller
          $lokasi = Lokasi::find($id);
          $lokasi->lokasi = $request->lokasi;
          $lokasi->save();
+
+         if($request->gambar != null) {
+             $file = $request->file('gambar');
+             $imageName = $lokasi->id.'.lokasi.'.$file->getClientOriginalExtension();
+             $path = $request->file('gambar')->storeAs('public/lokasi/', $imageName);
+             $lokasi->gambar = 'lokasi/'.$imageName;
+             $lokasi->save();
+         }
+
          return redirect()->action('LokasiController@index');
      }
 

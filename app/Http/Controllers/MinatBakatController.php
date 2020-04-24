@@ -33,6 +33,14 @@ class MinatBakatController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $minatbakat->id.'.minatbakat.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/minatbakat/', $imageName);
+            $minatbakat->gambar = 'minatbakat/'.$imageName;
+            $minatbakat->save();
+        }
+
         return redirect()->action('MinatBakatController@index');
     }
 
@@ -56,6 +64,15 @@ class MinatBakatController extends Controller
         $minatbakat = MinatBakat::find($id);
         $minatbakat->text = $request->text;
         $minatbakat->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $minatbakat->id.'.minatbakat.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/minatbakat/', $imageName);
+            $minatbakat->gambar = 'minatbakat/'.$imageName;
+            $minatbakat->save();
+        }
+
         return redirect()->action('MinatBakatController@index');
     }
 

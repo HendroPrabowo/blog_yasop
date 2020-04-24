@@ -33,6 +33,14 @@ class RutinitasController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $rutinitas->id.'.rutinitas.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/rutinitas/', $imageName);
+            $rutinitas->gambar = 'rutinitas/'.$imageName;
+            $rutinitas->save();
+        }
+
         return redirect()->action('RutinitasController@index');
     }
 
@@ -56,6 +64,15 @@ class RutinitasController extends Controller
         $rutinitas = Rutinitas::find($id);
         $rutinitas->text = $request->text;
         $rutinitas->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $rutinitas->id.'.rutinitas.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/rutinitas/', $imageName);
+            $rutinitas->gambar = 'rutinitas/'.$imageName;
+            $rutinitas->save();
+        }
+
         return redirect()->action('RutinitasController@index');
     }
 

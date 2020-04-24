@@ -33,6 +33,14 @@ class LainnyaController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $lainnya->id.'.lainnya.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/lainnya/', $imageName);
+            $lainnya->gambar = 'lainnya/'.$imageName;
+            $lainnya->save();
+        }
+
         return redirect()->action('LainnyaController@index');
     }
 
@@ -56,6 +64,15 @@ class LainnyaController extends Controller
         $lainnya = Lainnya::find($id);
         $lainnya->text = $request->text;
         $lainnya->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $lainnya->id.'.lainnya.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/lainnya/', $imageName);
+            $lainnya->gambar = 'lainnya/'.$imageName;
+            $lainnya->save();
+        }
+
         return redirect()->action('LainnyaController@index');
     }
 

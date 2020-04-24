@@ -6,6 +6,9 @@
 </div>
 
 @if(!is_null($rutinitas))
+    @if(!is_null($rutinitas->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$rutinitas->gambar) }}" style="margin-bottom: 20px">
+    @endif
 @php
 echo $rutinitas->text;
 @endphp

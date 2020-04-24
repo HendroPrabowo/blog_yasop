@@ -16,6 +16,7 @@ class CreateSosialsTable extends Migration
         Schema::create('sosial', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class CreateVisimisisTable extends Migration
         Schema::create('visimisi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('visimisi');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

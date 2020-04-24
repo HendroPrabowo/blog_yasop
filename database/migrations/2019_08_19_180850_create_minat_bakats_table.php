@@ -16,6 +16,7 @@ class CreateMinatBakatsTable extends Migration
         Schema::create('minat_bakat', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

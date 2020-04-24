@@ -33,6 +33,14 @@ class PraktikumController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $praktikum->id.'.praktikum.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/praktikum/', $imageName);
+            $praktikum->gambar = 'praktikum/'.$imageName;
+            $praktikum->save();
+        }
+
         return redirect()->action('PraktikumController@index');
     }
 
@@ -56,6 +64,15 @@ class PraktikumController extends Controller
         $praktikum = Praktikum::find($id);
         $praktikum->text = $request->text;
         $praktikum->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $praktikum->id.'.praktikum.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/praktikum/', $imageName);
+            $praktikum->gambar = 'praktikum/'.$imageName;
+            $praktikum->save();
+        }
+
         return redirect()->action('PraktikumController@index');
     }
 

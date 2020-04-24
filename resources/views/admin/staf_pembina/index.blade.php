@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/staf_pembina/'.$staf_pembina->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Staf Pembina</a>
 
+    @if(!is_null($staf_pembina->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$staf_pembina->gambar) }}" style="margin-bottom: 20px">
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             @php

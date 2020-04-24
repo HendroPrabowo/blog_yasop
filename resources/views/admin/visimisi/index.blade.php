@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/visimisi/'.$visimisi->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Visi Misi</a>
 
+    @if(!is_null($visimisi->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$visimisi->gambar) }}" style="margin-bottom: 20px">
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             @php
@@ -25,4 +29,5 @@
         </div>
     </div>
     @endif
+
 @endsection

@@ -33,6 +33,14 @@ class KesehatanController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $kesehatan->id.'.kesehatan.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/kesehatan/', $imageName);
+            $kesehatan->gambar = 'kesehatan/'.$imageName;
+            $kesehatan->save();
+        }
+
         return redirect()->action('KesehatanController@index');
     }
 
@@ -56,6 +64,15 @@ class KesehatanController extends Controller
         $kesehatan = Kesehatan::find($id);
         $kesehatan->text = $request->text;
         $kesehatan->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $kesehatan->id.'.kesehatan.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/kesehatan/', $imageName);
+            $kesehatan->gambar = 'kesehatan/'.$imageName;
+            $kesehatan->save();
+        }
+
         return redirect()->action('KesehatanController@index');
     }
 

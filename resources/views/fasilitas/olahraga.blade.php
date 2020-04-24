@@ -5,6 +5,9 @@
     <h1>Olah Raga</h1>
 </div>
 @if(!is_null($olahraga))
+    @if(!is_null($olahraga->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$olahraga->gambar) }}" style="margin-bottom: 20px">
+    @endif
 @php
 echo $olahraga->text;
 @endphp

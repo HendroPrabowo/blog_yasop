@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/it/'.$it->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit IT</a>
 
+    @if(!is_null($it->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$it->gambar) }}" style="margin-bottom: 20px">
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             @php

@@ -33,6 +33,14 @@ class EkstrakurikulerController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $ekstrakurikuler->id.'.ekstrakurikuler.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/ekstrakurikuler/', $imageName);
+            $ekstrakurikuler->gambar = 'ekstrakurikuler/'.$imageName;
+            $ekstrakurikuler->save();
+        }
+
         return redirect()->action('EkstrakurikulerController@index');
     }
 
@@ -56,6 +64,15 @@ class EkstrakurikulerController extends Controller
         $ekstrakurikuler = Ekstrakurikuler::find($id);
         $ekstrakurikuler->text = $request->text;
         $ekstrakurikuler->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $ekstrakurikuler->id.'.ekstrakurikuler.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/ekstrakurikuler/', $imageName);
+            $ekstrakurikuler->gambar = 'ekstrakurikuler/'.$imageName;
+            $ekstrakurikuler->save();
+        }
+
         return redirect()->action('EkstrakurikulerController@index');
     }
 

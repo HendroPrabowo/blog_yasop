@@ -16,6 +16,7 @@ class CreateSejarahsTable extends Migration
         Schema::create('sejarah', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('sejarah');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/struktur_organisasi/'.$struktur_organisasi->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Struktur Organisasi</a>
 
+    @if(!is_null($struktur_organisasi->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$struktur_organisasi->gambar) }}" style="margin-bottom: 20px">
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             @php

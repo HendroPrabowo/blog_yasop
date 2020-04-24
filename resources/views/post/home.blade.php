@@ -26,7 +26,7 @@ $i=0;
                     <img class="d-block w-100" src="{{ asset('storage/'.$value->post->gambar) }}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{ $value->post->judul }}</h5>
-                        <a href="/lihat/{{ $value->post->id }}" class="btn btn-primary">Read More ...</a>
+                        <a href="{{ url('/lihat/'.$value->post->id) }}" class="btn btn-primary">Read More ...</a>
                     </div>
                 </div>
             @else
@@ -34,7 +34,7 @@ $i=0;
                     <img class="d-block w-100" src="{{ asset('storage/'.$value->post->gambar) }}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{ $value->post->judul }}</h5>
-                        <a href="/lihat/{{ $value->post->id }}" class="btn btn-primary">Read More ...</a>
+                        <a href="{{ url('/lihat/'.$value->post->id) }}" class="btn btn-primary">Read More ...</a>
                     </div>
                 </div>
             @endif

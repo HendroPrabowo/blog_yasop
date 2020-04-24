@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/kepala_asrama/'.$kepala_asrama->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Kepala Asrama</a>
 
+    @if(!is_null($kepala_asrama->gambar))
+        <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$kepala_asrama->gambar) }}" style="margin-bottom: 20px">
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             @php

@@ -33,6 +33,14 @@ class SosialController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $sosial->id.'.sosial.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/sosial/', $imageName);
+            $sosial->gambar = 'sosial/'.$imageName;
+            $sosial->save();
+        }
+
         return redirect()->action('SosialController@index');
     }
 
@@ -56,6 +64,15 @@ class SosialController extends Controller
         $sosial = Sosial::find($id);
         $sosial->text = $request->text;
         $sosial->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $sosial->id.'.sosial.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/sosial/', $imageName);
+            $sosial->gambar = 'sosial/'.$imageName;
+            $sosial->save();
+        }
+
         return redirect()->action('SosialController@index');
     }
 

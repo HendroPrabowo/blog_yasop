@@ -33,6 +33,14 @@ class AkomodasiController extends Controller
             'text' => $request->text
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $akomodasi->id.'.akomodasi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/akomodasi/', $imageName);
+            $akomodasi->gambar = 'akomodasi/'.$imageName;
+            $akomodasi->save();
+        }
+
         return redirect()->action('AkomodasiController@index');
     }
 
@@ -56,6 +64,15 @@ class AkomodasiController extends Controller
         $akomodasi = Akomodasi::find($id);
         $akomodasi->text = $request->text;
         $akomodasi->save();
+
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $akomodasi->id.'.akomodasi.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/akomodasi/', $imageName);
+            $akomodasi->gambar = 'akomodasi/'.$imageName;
+            $akomodasi->save();
+        }
+
         return redirect()->action('AkomodasiController@index');
     }
 

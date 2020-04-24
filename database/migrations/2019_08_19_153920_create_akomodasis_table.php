@@ -16,6 +16,7 @@ class CreateAkomodasisTable extends Migration
         Schema::create('akomodasi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('text');
+            $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });
     }

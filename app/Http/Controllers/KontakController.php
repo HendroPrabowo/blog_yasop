@@ -49,6 +49,14 @@ class KontakController extends Controller
             'kontak' => $request->kontak
         ]);
 
+        if($request->gambar != null) {
+            $file = $request->file('gambar');
+            $imageName = $kontak->id.'.kontak.'.$file->getClientOriginalExtension();
+            $path = $request->file('gambar')->storeAs('public/kontak/', $imageName);
+            $kontak->gambar = 'kontak/'.$imageName;
+            $kontak->save();
+        }
+
         return redirect()->action('KontakController@index');
     }
 
@@ -91,6 +99,15 @@ class KontakController extends Controller
          $kontak = Kontak::find($id);
          $kontak->kontak = $request->kontak;
          $kontak->save();
+
+         if($request->gambar != null) {
+             $file = $request->file('gambar');
+             $imageName = $kontak->id.'.kontak.'.$file->getClientOriginalExtension();
+             $path = $request->file('gambar')->storeAs('public/kontak/', $imageName);
+             $kontak->gambar = 'kontak/'.$imageName;
+             $kontak->save();
+         }
+
          return redirect()->action('KontakController@index');
      }
 
