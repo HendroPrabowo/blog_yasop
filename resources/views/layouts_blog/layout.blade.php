@@ -144,7 +144,7 @@
               </div>
           </div>
           <div class="col-md-3">
-              <p class="text-white">Designed By : Hendro Prabowo</p>
+              <p class="text-white">Designed By : Developer</p>
           </div>
       </div>
     </div>
