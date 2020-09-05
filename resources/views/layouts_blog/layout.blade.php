@@ -91,7 +91,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Penerimaan Siswa</a>
+                    <a class="nav-link" href="{{ url('http://spsb.yasop.id/')  }}">Penerimaan Siswa</a>
                 </li>
             </ul>
         </div>
