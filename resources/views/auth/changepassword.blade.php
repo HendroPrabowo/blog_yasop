@@ -33,6 +33,7 @@
 
                             <div class="col-md-6">
                                 <input id="current-password" type="password" class="form-control" name="current-password" required>
+                                <input type="checkbox" onclick="showCurrentPassword()">  Lihat
 
                                 @if ($errors->has('current-password'))
                                     <span class="help-block">
@@ -47,6 +48,7 @@
 
                             <div class="col-md-6">
                                 <input id="new-password" type="password" class="form-control" name="new-password" required>
+                                <input type="checkbox" onclick="showNewPassword()">  Lihat
 
                                 @if ($errors->has('new-password'))
                                     <span class="help-block">
@@ -61,6 +63,7 @@
 
                             <div class="col-md-6">
                                 <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                                <input type="checkbox" onclick="showConfirmPassword()">  Lihat
                             </div>
                         </div>
 
@@ -76,4 +79,32 @@
             </div>
         </div>
     </div>
+    <script>
+        function showCurrentPassword() {
+            var x = document.getElementById("current-password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function showNewPassword() {
+            var x = document.getElementById("new-password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function showConfirmPassword() {
+            var x = document.getElementById("new-password-confirm");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection

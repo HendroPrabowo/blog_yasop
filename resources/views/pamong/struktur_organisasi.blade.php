@@ -2,7 +2,7 @@
 
 @section('isi')
 <div class="header" style="margin-top: 50px">
-    <h1>Struktu Organisasi</h1>
+
 </div>
 
 @if(!is_null($struktur_organisasi))

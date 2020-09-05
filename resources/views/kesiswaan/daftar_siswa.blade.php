@@ -2,7 +2,7 @@
 
 @section('isi')
 <div class="header" style="margin-top: 50px">
-    <h1>Daftar Siswa</h1>
+
 </div>
 
 <table class="table table-bordered table-striped">

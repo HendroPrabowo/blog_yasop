@@ -75,9 +75,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kegiatan</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('/kegiatan/rutinitas') }}">Rutinias</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/rutinitas') }}">Rutinitas</a>
                         <a class="dropdown-item" href="{{ url('/kegiatan/ekstrakurikuler') }}">Extrakurikuler</a>
-                        <a class="dropdown-item" href="{{ url('/kegiatan/minatbakat') }}">Minta-Bakat</a>
+                        <a class="dropdown-item" href="{{ url('/kegiatan/minatbakat') }}">Minat-Bakat</a>
                         <a class="dropdown-item" href="{{ url('/kegiatan/lainnya') }}">Lainnya</a>
                     </div>
                 </li>
@@ -105,7 +105,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-4" style="background-color: #660000">
+  <footer class="py-4" style="background-color: #660000; margin-top:30px">
     <div class="container">
       <!-- <p class="m-0 text-center text-white">Copyright &copy; 2019 Yayasan Soposurung Balige. All right reserved</p> -->
       <div class="row">

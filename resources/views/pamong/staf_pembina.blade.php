@@ -2,7 +2,7 @@
 
 @section('isi')
 <div class="header" style="margin-top: 50px">
-    <h1>Staf Pembina</h1>
+
 </div>
 
 @if(!is_null($staf_pembina))
