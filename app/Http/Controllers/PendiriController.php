@@ -46,7 +46,8 @@ class PendiriController extends Controller
         ]);
 
         $pendiri = Pendiri::create([
-            'pendiri' => $request->pendiri
+            'pendiri' => $request->pendiri,
+            'judul' => $request->judul,
         ]);
 
         if($request->gambar != null) {
@@ -98,6 +99,7 @@ class PendiriController extends Controller
 
         $pendiri = Pendiri::find($id);
         $pendiri->pendiri = $request->pendiri;
+        $pendiri->judul = $request->judul;
         $pendiri->save();
 
         if($request->gambar != null) {

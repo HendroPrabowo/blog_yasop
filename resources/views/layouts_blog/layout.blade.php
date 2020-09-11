@@ -36,7 +36,7 @@
     <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('image\logo\yayasan_soposurung_logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">  Yayasan Soposurung</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon fa fa-bars"></span>
       </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
@@ -131,7 +131,7 @@
                           <tr>
                               <td width="10%"><img src="{{ asset('image/logo/logo_blog.png') }}" alt=""></td>
                               <td class="text-white">
-                                  <h4><b>Yayasan Soposorung</b></h4>
+                                  <h5><b>Yayasan TB Soposorung</b></h5>
                                   Jl. Dr. Adrianus Sinaga<br>
                                   Soposurung - Balige<br>
                                   Kabupaten Toba Samosir 22312<br>

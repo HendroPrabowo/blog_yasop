@@ -19,10 +19,14 @@
 @endsection
 
 @section('content')
-    <h3>Lokasi</h1>
+    <h3>Lokasi</h3>
         <div class="card-body card-block">
             <form action="{{ url('/lokasi') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <label for="posting">Judul</label>
+                    <input name="judul" rows=15 class="form-control" value="{{ old('judul') }}">
+                </div>
                 @error('lokasi')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

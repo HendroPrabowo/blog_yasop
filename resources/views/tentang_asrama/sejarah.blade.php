@@ -6,6 +6,10 @@
 </div>
 
 @if(!is_null($sejarah))
+    @if(!is_null($sejarah->judul))
+        <h1 style="text-align: center"><b>{{ $sejarah->judul  }}</b></h1>
+    @endif
+
     @if(!is_null($sejarah->gambar))
         <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$sejarah->gambar) }}" style="margin-bottom: 20px">
     @endif

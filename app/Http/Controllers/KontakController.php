@@ -46,7 +46,8 @@ class KontakController extends Controller
         ]);
 
         $kontak = Kontak::create([
-            'kontak' => $request->kontak
+            'kontak' => $request->kontak,
+            'judul' => $request->judul,
         ]);
 
         if($request->gambar != null) {
@@ -98,6 +99,7 @@ class KontakController extends Controller
 
          $kontak = Kontak::find($id);
          $kontak->kontak = $request->kontak;
+         $kontak->judul = $request->judul;
          $kontak->save();
 
          if($request->gambar != null) {

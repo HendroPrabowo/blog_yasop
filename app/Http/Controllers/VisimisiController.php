@@ -46,7 +46,8 @@ class VisimisiController extends Controller
         ]);
 
         $visimisi = Visimisi::create([
-            'visimisi' => $request->visimisi
+            'visimisi' => $request->visimisi,
+            'judul' => $request->judul,
         ]);
 
         if($request->gambar != null) {
@@ -98,6 +99,7 @@ class VisimisiController extends Controller
 
         $visimisi = Visimisi::find($id);
         $visimisi->visimisi = $request->visimisi;
+        $visimisi->judul = $request->judul;
         $visimisi->save();
 
         if($request->gambar != null) {

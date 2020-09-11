@@ -6,6 +6,10 @@
 </div>
 
 @if(!is_null($visimisi))
+    @if(!is_null($visimisi->judul))
+        <h1 style="text-align: center"><b>{{ $visimisi->judul  }}</b></h1>
+    @endif
+
     @if(!is_null($visimisi->gambar))
         <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$visimisi->gambar) }}" style="margin-bottom: 20px">
     @endif

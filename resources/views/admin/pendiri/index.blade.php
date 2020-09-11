@@ -17,6 +17,10 @@
     @else
     <a href="{{ url('/pendiri/'.$pendiri->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Pendiri</a>
 
+    @if(!is_null($pendiri->judul))
+        <h1 style="text-align: center; margin-bottom: 10px"><b>{{ $pendiri->judul }}</b></h1>
+    @endif
+
     @if(!is_null($pendiri->gambar))
         <img class="rounded mx-auto d-block w-50" src="{{ asset('storage/'.$pendiri->gambar) }}" style="margin-bottom: 20px">
     @endif

@@ -46,7 +46,8 @@ class SejarahController extends Controller
         ]);
 
         $sejarah = Sejarah::create([
-            'sejarah' => $request->sejarah
+            'sejarah' => $request->sejarah,
+            'judul' => $request->judul,
         ]);
 
         if($request->gambar != null) {
@@ -98,6 +99,7 @@ class SejarahController extends Controller
 
          $sejarah = Sejarah::find($id);
          $sejarah->sejarah = $request->sejarah;
+         $sejarah->judul = $request->judul;
          $sejarah->save();
 
          if($request->gambar != null) {

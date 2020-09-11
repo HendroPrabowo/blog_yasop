@@ -15,6 +15,7 @@ class CreateRutinitasTable extends Migration
     {
         Schema::create('rutinitas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('judul', 500)->nullable();
             $table->text('text');
             $table->string('gambar', 500)->nullable();
             $table->timestamps();

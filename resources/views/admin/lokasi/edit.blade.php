@@ -24,6 +24,10 @@
             <form action="{{ url('/lokasi/'.$lokasi->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <div class="form-group">
+                    <label for="posting">Judul</label>
+                    <input name="judul" rows=15 class="form-control" value="{{ $lokasi->judul }}">
+                </div>
                 @error('lokasi')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

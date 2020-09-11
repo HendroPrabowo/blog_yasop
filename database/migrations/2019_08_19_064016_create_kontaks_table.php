@@ -15,6 +15,7 @@ class CreateKontaksTable extends Migration
     {
         Schema::create('kontak', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('judul', 500)->nullable();
             $table->text('kontak');
             $table->string('gambar', 500)->nullable();
             $table->timestamps();

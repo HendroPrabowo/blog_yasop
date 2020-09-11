@@ -15,6 +15,7 @@ class CreatePendirisTable extends Migration
     {
         Schema::create('pendiri', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('judul', 500)->nullable();
             $table->text('pendiri');
             $table->string('gambar', 500)->nullable();
             $table->timestamps();

@@ -46,7 +46,8 @@ class LokasiController extends Controller
         ]);
 
         $lokasi = Lokasi::create([
-            'lokasi' => $request->lokasi
+            'lokasi' => $request->lokasi,
+            'judul' => $request->judul,
         ]);
 
         if($request->gambar != null) {
@@ -98,6 +99,7 @@ class LokasiController extends Controller
 
          $lokasi = Lokasi::find($id);
          $lokasi->lokasi = $request->lokasi;
+         $lokasi->judul = $request->judul;
          $lokasi->save();
 
          if($request->gambar != null) {
