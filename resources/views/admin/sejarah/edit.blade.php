@@ -37,6 +37,14 @@
                 </div>
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
+                    <div>
+                        <label>Pilihan Untuk Gambar</label>
+                        <select name="pilihan_gambar" class="form-control">
+                            <option value="tetap">Tetap</option>
+                            <option value="ganti">Ganti Gambar</option>
+                            <option value="hapus">Hapus Gambar</option>
+                        </select>
+                    </div>
                     <input type="file" name="gambar" value="{{ old('gambar') }}" class="form-control">
                 </div>
                 @error('gambar')

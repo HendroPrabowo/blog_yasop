@@ -102,11 +102,16 @@ class KontakController extends Controller
          $kontak->judul = $request->judul;
          $kontak->save();
 
-         if($request->gambar != null) {
-             $file = $request->file('gambar');
-             $imageName = $kontak->id.'.kontak.'.$file->getClientOriginalExtension();
-             $path = $request->file('gambar')->storeAs('public/kontak/', $imageName);
-             $kontak->gambar = 'kontak/'.$imageName;
+         if ($request->pilihan_gambar == "ganti") {
+             if($request->gambar != null) {
+                 $file = $request->file('gambar');
+                 $imageName = $kontak->id.'.kontak.'.$file->getClientOriginalExtension();
+                 $path = $request->file('gambar')->storeAs('public/kontak/', $imageName);
+                 $kontak->gambar = 'kontak/'.$imageName;
+                 $kontak->save();
+             }
+         }elseif ($request->pilihan_gambar == "hapus") {
+             $kontak->gambar = null;
              $kontak->save();
          }
 

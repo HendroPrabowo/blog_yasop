@@ -102,11 +102,16 @@ class LokasiController extends Controller
          $lokasi->judul = $request->judul;
          $lokasi->save();
 
-         if($request->gambar != null) {
-             $file = $request->file('gambar');
-             $imageName = $lokasi->id.'.lokasi.'.$file->getClientOriginalExtension();
-             $path = $request->file('gambar')->storeAs('public/lokasi/', $imageName);
-             $lokasi->gambar = 'lokasi/'.$imageName;
+         if ($request->pilihan_gambar == "ganti") {
+             if($request->gambar != null) {
+                 $file = $request->file('gambar');
+                 $imageName = $lokasi->id.'.lokasi.'.$file->getClientOriginalExtension();
+                 $path = $request->file('gambar')->storeAs('public/lokasi/', $imageName);
+                 $lokasi->gambar = 'lokasi/'.$imageName;
+                 $lokasi->save();
+             }
+         }elseif ($request->pilihan_gambar == "hapus") {
+             $lokasi->gambar = null;
              $lokasi->save();
          }
 

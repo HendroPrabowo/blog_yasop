@@ -102,11 +102,16 @@ class SejarahController extends Controller
          $sejarah->judul = $request->judul;
          $sejarah->save();
 
-         if($request->gambar != null) {
-             $file = $request->file('gambar');
-             $imageName = $sejarah->id.'.sejarah.'.$file->getClientOriginalExtension();
-             $path = $request->file('gambar')->storeAs('public/sejarah/', $imageName);
-             $sejarah->gambar = 'sejarah/'.$imageName;
+         if ($request->pilihan_gambar == "ganti") {
+             if($request->gambar != null) {
+                 $file = $request->file('gambar');
+                 $imageName = $sejarah->id.'.sejarah.'.$file->getClientOriginalExtension();
+                 $path = $request->file('gambar')->storeAs('public/sejarah/', $imageName);
+                 $sejarah->gambar = 'sejarah/'.$imageName;
+                 $sejarah->save();
+             }
+         }elseif ($request->pilihan_gambar == "hapus") {
+             $sejarah->gambar = null;
              $sejarah->save();
          }
 

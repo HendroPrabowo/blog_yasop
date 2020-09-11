@@ -102,6 +102,19 @@ class VisimisiController extends Controller
         $visimisi->judul = $request->judul;
         $visimisi->save();
 
+        if ($request->pilihan_gambar == "ganti") {
+            if($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $visimisi->id.'.visimisi.'.$file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/visimisi/', $imageName);
+                $visimisi->gambar = 'visimisi/'.$imageName;
+                $visimisi->save();
+            }
+        }elseif ($request->pilihan_gambar == "hapus") {
+            $visimisi->gambar = null;
+            $visimisi->save();
+        }
+
         if($request->gambar != null) {
             $file = $request->file('gambar');
             $imageName = $visimisi->id.'.visimisi.'.$file->getClientOriginalExtension();

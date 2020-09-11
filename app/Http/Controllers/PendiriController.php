@@ -102,11 +102,16 @@ class PendiriController extends Controller
         $pendiri->judul = $request->judul;
         $pendiri->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $pendiri->id.'.pendiri.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/pendiri/', $imageName);
-            $pendiri->gambar = 'pendiri/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $pendiri->id.'.pendiri.'.$file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/pendiri/', $imageName);
+                $pendiri->gambar = 'pendiri/'.$imageName;
+                $pendiri->save();
+            }
+        }elseif ($request->pilihan_gambar == "hapus") {
+            $pendiri->gambar = null;
             $pendiri->save();
         }
 
