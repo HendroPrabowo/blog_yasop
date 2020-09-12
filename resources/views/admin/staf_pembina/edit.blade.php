@@ -24,15 +24,32 @@
             <form action="{{ url('/staf_pembina/'.$staf_pembina->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                @error('staf_pembina')
-                    <div class="alert alert-danger">{{ $message }}</div>
+
+                @error('nama')
+                <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
-                    <label for="posting">Staf Pembina</label>
-                    <textarea name="text" rows=15 class="form-control" id="mytextarea">{{ $staf_pembina->text }}</textarea>
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" value="{{ $staf_pembina->nama }}">
                 </div>
+
+                @error('jabatan')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" name="jabatan" class="form-control" value="{{ $staf_pembina->jabatan }}">
+                </div>
+
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
+                    <div>
+                        <label>Pilihan Untuk Gambar</label>
+                        <select name="pilihan_gambar" class="form-control">
+                            <option value="tetap">Tetap</option>
+                            <option value="ganti">Ganti Gambar</option>
+                        </select>
+                    </div>
                     <input type="file" name="gambar" value="{{ old('gambar') }}" class="form-control">
                 </div>
                 @error('gambar')

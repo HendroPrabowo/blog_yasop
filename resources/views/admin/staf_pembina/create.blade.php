@@ -23,13 +23,22 @@
         <div class="card-body card-block">
             <form action="{{ url('/staf_pembina') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @error('staf_pembina')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                @error('nama')
+                <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
-                    <label for="posting">Staf Pembina</label>
-                    <textarea name="text" rows=15 class="form-control" id="mytextarea">{{ old('staf_pembina') }}</textarea>
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
                 </div>
+
+                @error('jabatan')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" name="jabatan" class="form-control" value="{{ old('jabatan') }}">
+                </div>
+
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
                     <input type="file" name="gambar" value="{{ old('gambar') }}" class="form-control">

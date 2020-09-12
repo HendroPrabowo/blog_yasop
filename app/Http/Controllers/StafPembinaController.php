@@ -9,28 +9,26 @@ class StafPembinaController extends Controller
 {
     public function index()
     {
-        $staf_pembina = StafPembina::first();
+        $staf_pembina = StafPembina::all();
         return view('admin.staf_pembina.index', ['staf_pembina' => $staf_pembina]);
     }
 
     public function create()
     {
-        $staf_pembina = StafPembina::all();
-        if(sizeof($staf_pembina) >= 1){
-            return redirect()->action('StafPembinaController@index');
-        }
-
         return view('admin.staf_pembina.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'text' => 'required'
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'gambar' => 'required'
         ]);
 
         $staf_pembina = StafPembina::create([
-            'text' => $request->text
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan
         ]);
 
         if($request->gambar != null) {
@@ -58,26 +56,30 @@ class StafPembinaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'text' => 'required'
+            'nama' => 'required',
+            'jabatan' => 'required'
         ]);
 
         $staf_pembina = StafPembina::find($id);
-        $staf_pembina->text = $request->text;
+        $staf_pembina->nama = $request->nama;
+        $staf_pembina->jabatan = $request->jabatan;
         $staf_pembina->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $staf_pembina->id.'.staf_pembina.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/staf_pembina/', $imageName);
-            $staf_pembina->gambar = 'staf_pembina/'.$imageName;
-            $staf_pembina->save();
+        if ($request->pilihan_gambar == "ganti") {
+            if($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $staf_pembina->id.'.staf_pembina.'.$file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/staf_pembina/', $imageName);
+                $staf_pembina->gambar = 'staf_pembina/'.$imageName;
+                $staf_pembina->save();
+            }
         }
-
         return redirect()->action('StafPembinaController@index');
     }
 
-    public function destroy(StafPembina $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        StafPembina::destroy($id);
+        return redirect()->action('StafPembinaController@index');
     }
 }

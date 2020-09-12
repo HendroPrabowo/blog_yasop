@@ -15,8 +15,8 @@ class CreateStafPembinasTable extends Migration
     {
         Schema::create('staf_pembina', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('judul', 500)->nullable();
-            $table->text('text');
+            $table->string('nama', 500)->nullable();
+            $table->text('jabatan');
             $table->string('gambar', 500)->nullable();
             $table->timestamps();
         });

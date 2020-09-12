@@ -17,17 +17,17 @@ class PamongController extends Controller
     }
 
     public function staf_pembina(){
-        $staf_pembina = StafPembina::first();
+        $staf_pembina = StafPembina::all();
         return view('pamong.staf_pembina', ['staf_pembina' => $staf_pembina]);
     }
 
     public function staf_pendukung(){
-        $staf_pendukung = StafPendukung::first();
+        $staf_pendukung = StafPendukung::all();
         return view('pamong.staf_pendukung', ['staf_pendukung' => $staf_pendukung]);
     }
 
     public function staf_pengajar(){
-        $staf_pendukung = StafPengajar::first();
+        $staf_pendukung = StafPengajar::all();
         return view('pamong.staf_pengajar', ['staf_pengajar' => $staf_pendukung]);
     }
 
