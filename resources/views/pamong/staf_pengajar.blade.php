@@ -2,7 +2,7 @@
 
 @section('isi')
 <div class="header" style="margin-top: 50px">
-    <h1>Staf Pengajar</h1>
+    <h1 style="font-family: 'Times New Roman'">Staf Pengajar</h1>
 </div>
 
 <div class="container">

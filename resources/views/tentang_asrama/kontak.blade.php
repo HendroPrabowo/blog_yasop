@@ -7,7 +7,7 @@
 
 @if(!is_null($kontak))
     @if(!is_null($kontak->judul))
-        <h1 style="text-align: center"><b>{{ $kontak->judul  }}</b></h1>
+        <h1 style="text-align: center; font-family: 'Times New Roman'"><b>{{ $kontak->judul  }}</b></h1>
     @endif
 
     @if(!is_null($kontak->gambar))

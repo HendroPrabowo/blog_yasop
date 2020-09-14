@@ -7,7 +7,7 @@
 
 @if(!is_null($visimisi))
     @if(!is_null($visimisi->judul))
-        <h1 style="text-align: center"><b>{{ $visimisi->judul  }}</b></h1>
+        <h1 style="text-align: center; font-family: 'Times New Roman'"><b>{{ $visimisi->judul  }}</b></h1>
     @endif
 
     @if(!is_null($visimisi->gambar))

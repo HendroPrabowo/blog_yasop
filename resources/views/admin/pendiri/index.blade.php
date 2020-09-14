@@ -18,7 +18,7 @@
     <a href="{{ url('/pendiri/'.$pendiri->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Pendiri</a>
 
     @if(!is_null($pendiri->judul))
-        <h1 style="text-align: center; margin-bottom: 10px"><b>{{ $pendiri->judul }}</b></h1>
+        <h1 style="text-align: center; margin-bottom: 10px; font-family: 'Times New Roman'"><b>{{ $pendiri->judul }}</b></h1>
     @endif
 
     @if(!is_null($pendiri->gambar))
