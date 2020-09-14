@@ -7,7 +7,7 @@
 
 @if(!is_null($pendiri))
     @if(!is_null($pendiri->judul))
-        <h1 style="text-align: center; font-family: 'Times New Roman'"><b>{{ $pendiri->judul  }}</b></h1>
+        <h1 style="font-family: 'Times New Roman'"><b>{{ $pendiri->judul  }}</b></h1>
     @endif
 
     @if(!is_null($pendiri->gambar))

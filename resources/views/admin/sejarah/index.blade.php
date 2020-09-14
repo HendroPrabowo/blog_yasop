@@ -18,7 +18,7 @@
     <a href="{{ url('/sejarah/'.$sejarah->id.'/edit') }}" class="btn btn-success" style="margin: 10px 0px">Edit Sejarah</a>
 
     @if(!is_null($sejarah->judul))
-        <h1 style="text-align: center; margin-bottom: 10px; font-family: 'Times New Roman'"><b>{{ $sejarah->judul }}</b></h1>
+        <h1 style="margin-bottom: 10px; font-family: 'Times New Roman'"><b>{{ $sejarah->judul }}</b></h1>
     @endif
 
     @if(!is_null($sejarah->gambar))

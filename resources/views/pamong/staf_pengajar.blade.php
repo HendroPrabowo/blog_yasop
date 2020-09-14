@@ -2,9 +2,9 @@
 
 @section('isi')
 <div class="header" style="margin-top: 50px">
-    <h1 style="font-family: 'Times New Roman'">Staf Pengajar</h1>
-</div>
 
+</div>
+<h1 style="font-family: 'Times New Roman'">Staf Pengajar</h1>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>

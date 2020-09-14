@@ -7,7 +7,7 @@
 
 @if(!is_null($lokasi))
     @if(!is_null($lokasi->judul))
-        <h1 style="text-align: center; font-family: 'Times New Roman'"><b>{{ $lokasi->judul  }}</b></h1>
+        <h1 style="font-family: 'Times New Roman'"><b>{{ $lokasi->judul  }}</b></h1>
     @endif
 
     @if(!is_null($lokasi->gambar))

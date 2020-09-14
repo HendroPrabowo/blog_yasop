@@ -7,7 +7,7 @@
 
 @if(!is_null($sejarah))
     @if(!is_null($sejarah->judul))
-        <h1 style="text-align: center; font-family: 'Times New Roman'"><b>{{ $sejarah->judul  }}</b></h1>
+        <h1 style="font-family: 'Times New Roman'"><b>{{ $sejarah->judul  }}</b></h1>
     @endif
 
     @if(!is_null($sejarah->gambar))
