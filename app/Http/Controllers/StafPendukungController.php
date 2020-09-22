@@ -22,8 +22,7 @@ class StafPendukungController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jabatan' => 'required',
-            'gambar' => 'required'
+            'jabatan' => 'required'
         ]);
 
         $staf_pendukung = StafPendukung::create([

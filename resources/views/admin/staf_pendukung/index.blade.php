@@ -30,7 +30,11 @@
                 <tr class="d-flex">
                     <td class="col-1 text-center">{{ $val->id }}</td>
                     <td class="col-3">
-                        <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}" style="height: 4cm; width: 3cm">
+                        @if($val->gambar != null)
+                            <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}" style="height: 4cm; width: 3cm">
+                        @else
+                            <img class="rounded mx-auto d-block" src="{{ asset('image/logo/user.svg')  }}" style="height: 4cm; width: 3cm">
+                        @endif
                     </td>
                     <td class="col-6">
                         <div class="container text-center">

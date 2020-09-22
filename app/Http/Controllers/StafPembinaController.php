@@ -22,8 +22,7 @@ class StafPembinaController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jabatan' => 'required',
-            'gambar' => 'required'
+            'jabatan' => 'required'
         ]);
 
         $staf_pembina = StafPembina::create([

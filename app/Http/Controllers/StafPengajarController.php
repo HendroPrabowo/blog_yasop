@@ -22,8 +22,7 @@ class StafPengajarController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jabatan' => 'required',
-            'gambar' => 'required'
+            'jabatan' => 'required'
         ]);
 
         $staf_pengajar = StafPengajar::create([
