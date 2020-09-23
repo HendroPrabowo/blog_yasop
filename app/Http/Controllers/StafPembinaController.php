@@ -9,7 +9,7 @@ class StafPembinaController extends Controller
 {
     public function index()
     {
-        $staf_pembina = StafPembina::all();
+        $staf_pembina = StafPembina::paginate(5);
         return view('admin.staf_pembina.index', ['staf_pembina' => $staf_pembina]);
     }
 

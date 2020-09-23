@@ -9,7 +9,7 @@ class StafPengajarController extends Controller
 {
     public function index()
     {
-        $staf_pengajar = StafPengajar::all();
+        $staf_pengajar = StafPengajar::paginate(5);
         return view('admin.staf_pengajar.index', ['staf_pengajar' => $staf_pengajar]);
     }
 

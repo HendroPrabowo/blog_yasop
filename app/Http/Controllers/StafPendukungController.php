@@ -9,7 +9,7 @@ class StafPendukungController extends Controller
 {
     public function index()
     {
-        $staf_pendukung = StafPendukung::all();
+        $staf_pendukung = StafPendukung::paginate(5);
         return view('admin.staf_pendukung.index', ['staf_pendukung' => $staf_pendukung]);
     }
 

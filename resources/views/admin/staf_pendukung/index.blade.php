@@ -26,9 +26,12 @@
             </tr>
             </thead>
             <tbody>
+            @php
+                $i = 1;
+            @endphp
             @foreach($staf_pendukung as $val)
                 <tr class="d-flex">
-                    <td class="col-1 text-center">{{ $val->id }}</td>
+                    <td class="col-1 text-center">{{ $i }}</td>
                     <td class="col-3">
                         @if($val->gambar != null)
                             <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}" style="height: 4cm; width: 3cm">
@@ -59,8 +62,18 @@
                         </form>
                     </td>
                 </tr>
+                @php
+                    $i++;
+                @endphp
             @endforeach
             </tbody>
         </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-sm">{{ $staf_pendukung->links() }}</div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
     </div>
 @endsection
