@@ -1,7 +1,7 @@
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url('/') }}"><img style="width:40px" src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}" alt="Logo"> Yayasan Soposurung</a>
+            <a class="navbar-brand" href="{{ url('/') }}"><img style="width:40px" src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}" alt="Logo"> Yayasan TB Soposurung</a>
             <!-- <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> -->
         </div>
     </div>
