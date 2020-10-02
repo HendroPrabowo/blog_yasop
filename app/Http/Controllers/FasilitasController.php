@@ -14,37 +14,37 @@ use App\Sosial;
 class FasilitasController extends Controller
 {
     public function akomodasi(){
-        $akomodasi = Akomodasi::first();
+        $akomodasi = Akomodasi::paginate(6);
         return view('fasilitas.akomodasi', ['akomodasi' => $akomodasi]);
     }
 
     public function belajar(){
-        $belajar = Belajar::first();
+        $belajar = Belajar::paginate(6);
         return view('fasilitas.belajar', ['belajar' => $belajar]);
     }
 
     public function praktikum(){
-        $praktikum = Praktikum::first();
+        $praktikum = Praktikum::paginate(6);
         return view('fasilitas.praktikum', ['praktikum' => $praktikum]);
     }
 
     public function kesehatan(){
-        $kesehatan = Kesehatan::first();
+        $kesehatan = Kesehatan::paginate(6);
         return view('fasilitas.kesehatan', ['kesehatan' => $kesehatan]);
     }
 
     public function it(){
-        $it = It::first();
+        $it = It::paginate(6);
         return view('fasilitas.it', ['it' => $it]);
     }
 
     public function olahraga(){
-        $olahraga = Olahraga::first();
+        $olahraga = Olahraga::paginate(6);
         return view('fasilitas.olahraga', ['olahraga' => $olahraga]);
     }
 
     public function sosial(){
-        $sosial = Sosial::first();
+        $sosial = Sosial::paginate(6);
         return view('fasilitas.sosial', ['sosial' => $sosial]);
     }
 }

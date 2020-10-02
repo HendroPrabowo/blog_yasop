@@ -9,35 +9,26 @@ class ItController extends Controller
 {
     public function index()
     {
-        $it = It::first();
+        $it = It::paginate(5);
         return view('admin.it.index', ['it' => $it]);
     }
 
     public function create()
     {
-        $it = It::all();
-        if(sizeof($it) >= 1){
-            return redirect()->action('ItController@index');
-        }
-
         return view('admin.it.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $it = It::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $it->id.'.it.'.$file->getClientOriginalExtension();
+            $imageName = $it->id . '.it.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/it/', $imageName);
-            $it->gambar = 'it/'.$imageName;
+            $it->gambar = 'it/' . $imageName;
             $it->save();
         }
 
@@ -57,27 +48,29 @@ class ItController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $it = It::find($id);
         $it->text = $request->text;
         $it->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $it->id.'.it.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/it/', $imageName);
-            $it->gambar = 'it/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $it->id . '.it.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/it/', $imageName);
+                $it->gambar = 'it/' . $imageName;
+                $it->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $it->gambar = null;
             $it->save();
         }
 
         return redirect()->action('ItController@index');
     }
 
-    public function destroy(It $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        It::destroy($id);
+        return redirect()->action('ItController@index');
     }
 }

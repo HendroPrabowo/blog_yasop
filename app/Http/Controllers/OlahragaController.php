@@ -9,35 +9,26 @@ class OlahragaController extends Controller
 {
     public function index()
     {
-        $olahraga = Olahraga::first();
+        $olahraga = Olahraga::paginate(5);
         return view('admin.olahraga.index', ['olahraga' => $olahraga]);
     }
 
     public function create()
     {
-        $olahraga = Olahraga::all();
-        if(sizeof($olahraga) >= 1){
-            return redirect()->action('OlahragaController@index');
-        }
-
         return view('admin.olahraga.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $olahraga = Olahraga::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $olahraga->id.'.olahraga.'.$file->getClientOriginalExtension();
+            $imageName = $olahraga->id . '.olahraga.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/olahraga/', $imageName);
-            $olahraga->gambar = 'olahraga/'.$imageName;
+            $olahraga->gambar = 'olahraga/' . $imageName;
             $olahraga->save();
         }
 
@@ -57,27 +48,29 @@ class OlahragaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $olahraga = Olahraga::find($id);
         $olahraga->text = $request->text;
         $olahraga->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $olahraga->id.'.olahraga.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/olahraga/', $imageName);
-            $olahraga->gambar = 'olahraga/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $olahraga->id . '.olahraga.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/olahraga/', $imageName);
+                $olahraga->gambar = 'olahraga/' . $imageName;
+                $olahraga->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $olahraga->gambar = null;
             $olahraga->save();
         }
 
         return redirect()->action('OlahragaController@index');
     }
 
-    public function destroy(Olahraga $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Olahraga::destroy($id);
+        return redirect()->action('OlahragaController@index');
     }
 }

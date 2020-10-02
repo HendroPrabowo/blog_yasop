@@ -9,35 +9,26 @@ class SosialController extends Controller
 {
     public function index()
     {
-        $sosial = Sosial::first();
+        $sosial = Sosial::paginate(5);
         return view('admin.sosial.index', ['sosial' => $sosial]);
     }
 
     public function create()
     {
-        $sosial = Sosial::all();
-        if(sizeof($sosial) >= 1){
-            return redirect()->action('SosialController@index');
-        }
-
         return view('admin.sosial.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $sosial = Sosial::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $sosial->id.'.sosial.'.$file->getClientOriginalExtension();
+            $imageName = $sosial->id . '.sosial.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/sosial/', $imageName);
-            $sosial->gambar = 'sosial/'.$imageName;
+            $sosial->gambar = 'sosial/' . $imageName;
             $sosial->save();
         }
 
@@ -57,27 +48,29 @@ class SosialController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $sosial = Sosial::find($id);
         $sosial->text = $request->text;
         $sosial->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $sosial->id.'.sosial.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/sosial/', $imageName);
-            $sosial->gambar = 'sosial/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $sosial->id . '.sosial.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/sosial/', $imageName);
+                $sosial->gambar = 'sosial/' . $imageName;
+                $sosial->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $sosial->gambar = null;
             $sosial->save();
         }
 
         return redirect()->action('SosialController@index');
     }
 
-    public function destroy(Sosial $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Sosial::destroy($id);
+        return redirect()->action('SosialController@index');
     }
 }

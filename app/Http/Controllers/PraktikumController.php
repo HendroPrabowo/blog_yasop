@@ -9,35 +9,26 @@ class PraktikumController extends Controller
 {
     public function index()
     {
-        $praktikum = Praktikum::first();
+        $praktikum = Praktikum::paginate(5);
         return view('admin.praktikum.index', ['praktikum' => $praktikum]);
     }
 
     public function create()
     {
-        $praktikum = Praktikum::all();
-        if(sizeof($praktikum) >= 1){
-            return redirect()->action('PraktikumController@index');
-        }
-
         return view('admin.praktikum.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $praktikum = Praktikum::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $praktikum->id.'.praktikum.'.$file->getClientOriginalExtension();
+            $imageName = $praktikum->id . '.praktikum.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/praktikum/', $imageName);
-            $praktikum->gambar = 'praktikum/'.$imageName;
+            $praktikum->gambar = 'praktikum/' . $imageName;
             $praktikum->save();
         }
 
@@ -57,27 +48,29 @@ class PraktikumController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $praktikum = Praktikum::find($id);
         $praktikum->text = $request->text;
         $praktikum->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $praktikum->id.'.praktikum.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/praktikum/', $imageName);
-            $praktikum->gambar = 'praktikum/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $praktikum->id . '.praktikum.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/praktikum/', $imageName);
+                $praktikum->gambar = 'praktikum/' . $imageName;
+                $praktikum->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $praktikum->gambar = null;
             $praktikum->save();
         }
 
         return redirect()->action('PraktikumController@index');
     }
 
-    public function destroy(Praktikum $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Praktikum::destroy($id);
+        return redirect()->action('PraktikumController@index');
     }
 }

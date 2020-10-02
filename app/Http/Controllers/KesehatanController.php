@@ -9,35 +9,26 @@ class KesehatanController extends Controller
 {
     public function index()
     {
-        $kesehatan = Kesehatan::first();
+        $kesehatan = Kesehatan::paginate(5);
         return view('admin.kesehatan.index', ['kesehatan' => $kesehatan]);
     }
 
     public function create()
     {
-        $kesehatan = Kesehatan::all();
-        if(sizeof($kesehatan) >= 1){
-            return redirect()->action('KesehatanController@index');
-        }
-
         return view('admin.kesehatan.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $kesehatan = Kesehatan::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $kesehatan->id.'.kesehatan.'.$file->getClientOriginalExtension();
+            $imageName = $kesehatan->id . '.kesehatan.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/kesehatan/', $imageName);
-            $kesehatan->gambar = 'kesehatan/'.$imageName;
+            $kesehatan->gambar = 'kesehatan/' . $imageName;
             $kesehatan->save();
         }
 
@@ -57,27 +48,29 @@ class KesehatanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $kesehatan = Kesehatan::find($id);
         $kesehatan->text = $request->text;
         $kesehatan->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $kesehatan->id.'.kesehatan.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/kesehatan/', $imageName);
-            $kesehatan->gambar = 'kesehatan/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $kesehatan->id . '.kesehatan.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/kesehatan/', $imageName);
+                $kesehatan->gambar = 'kesehatan/' . $imageName;
+                $kesehatan->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $kesehatan->gambar = null;
             $kesehatan->save();
         }
 
         return redirect()->action('KesehatanController@index');
     }
 
-    public function destroy(Kesehatan $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Kesehatan::destroy($id);
+        return redirect()->action('KesehatanController@index');
     }
 }

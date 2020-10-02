@@ -9,35 +9,26 @@ class BelajarController extends Controller
 {
     public function index()
     {
-        $belajar = Belajar::first();
+        $belajar = Belajar::paginate(5);
         return view('admin.belajar.index', ['belajar' => $belajar]);
     }
 
     public function create()
     {
-        $belajar = Belajar::all();
-        if(sizeof($belajar) >= 1){
-            return redirect()->action('BelajarController@index');
-        }
-
         return view('admin.belajar.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $belajar = Belajar::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $belajar->id.'.belajar.'.$file->getClientOriginalExtension();
+            $imageName = $belajar->id . '.belajar.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/belajar/', $imageName);
-            $belajar->gambar = 'belajar/'.$imageName;
+            $belajar->gambar = 'belajar/' . $imageName;
             $belajar->save();
         }
 
@@ -57,27 +48,29 @@ class BelajarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $belajar = Belajar::find($id);
         $belajar->text = $request->text;
         $belajar->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $belajar->id.'.belajar.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/belajar/', $imageName);
-            $belajar->gambar = 'belajar/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $belajar->id . '.belajar.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/belajar/', $imageName);
+                $belajar->gambar = 'belajar/' . $imageName;
+                $belajar->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $belajar->gambar = null;
             $belajar->save();
         }
 
         return redirect()->action('BelajarController@index');
     }
 
-    public function destroy(Belajar $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Belajar::destroy($id);
+        return redirect()->action('BelajarController@index');
     }
 }

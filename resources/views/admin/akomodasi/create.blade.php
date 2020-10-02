@@ -1,15 +1,5 @@
 @extends('layouts.layout')
 
-@section('head')
-<script src="{{ asset('/tinymce/js/tinymce/tinymce.min.js') }}"></script>
-<script>
-    tinymce.init({
-        selector: '#mytextarea',
-        // menubar: false,
-    });
-</script>
-@endsection
-
 @section('breadcrumb_title')
 <h1>Tambah Akomodasi</h1>
 @endsection
@@ -27,8 +17,8 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
-                    <label for="posting">Akomodasi</label>
-                    <textarea name="text" rows=15 class="form-control" id="mytextarea">{{ old('akomodasi') }}</textarea>
+                    <label for="posting">Caption</label>
+                    <textarea name="text" rows=2 class="form-control">{{ old('akomodasi') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="gambar">Gambar</label>
