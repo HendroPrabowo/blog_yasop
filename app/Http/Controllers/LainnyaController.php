@@ -9,26 +9,17 @@ class LainnyaController extends Controller
 {
     public function index()
     {
-        $lainnya = Lainnya::first();
+        $lainnya = Lainnya::paginate(5);
         return view('admin.lainnya.index', ['lainnya' => $lainnya]);
     }
 
     public function create()
     {
-        $lainnya = Lainnya::all();
-        if(sizeof($lainnya) >= 1){
-            return redirect()->action('LainnyaController@index');
-        }
-
         return view('admin.lainnya.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $lainnya = Lainnya::create([
             'text' => $request->text
         ]);
@@ -57,27 +48,29 @@ class LainnyaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $lainnya = Lainnya::find($id);
         $lainnya->text = $request->text;
         $lainnya->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $lainnya->id.'.lainnya.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/lainnya/', $imageName);
-            $lainnya->gambar = 'lainnya/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $lainnya->id.'.lainnya.'.$file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/lainnya/', $imageName);
+                $lainnya->gambar = 'lainnya/'.$imageName;
+                $lainnya->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $lainnya->gambar = null;
             $lainnya->save();
         }
 
         return redirect()->action('LainnyaController@index');
     }
 
-    public function destroy(Lainnya $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Lainnya::destroy($id);
+        return redirect()->action('LainnyaController@index');
     }
 }

@@ -11,22 +11,22 @@ use App\Rutinitas;
 class KegiatanController extends Controller
 {
     public function ekstrakurikuler(){
-        $ekstrakurikuler = Ekstrakurikuler::first();
+        $ekstrakurikuler = Ekstrakurikuler::paginate(6);
         return view('kegiatan.ekstrakurikuler', ['ekstrakurikuler' => $ekstrakurikuler]);
     }
 
     public function lainnya(){
-        $lainnya = Lainnya::first();
+        $lainnya = Lainnya::paginate(6);
         return view('kegiatan.lainnya', ['lainnya' => $lainnya]);
     }
 
     public function minatbakat(){
-        $minatbakat = MinatBakat::first();
+        $minatbakat = MinatBakat::paginate(6);
         return view('kegiatan.minatbakat', ['minatbakat' => $minatbakat]);
     }
 
     public function rutinitas(){
-        $rutinitas = Rutinitas::first();
+        $rutinitas = Rutinitas::paginate(6);
         return view('kegiatan.rutinitas', ['rutinitas' => $rutinitas]);
     }
 }

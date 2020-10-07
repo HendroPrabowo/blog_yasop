@@ -9,35 +9,26 @@ class RutinitasController extends Controller
 {
     public function index()
     {
-        $rutinitas = Rutinitas::first();
+        $rutinitas = Rutinitas::paginate(5);
         return view('admin.rutinitas.index', ['rutinitas' => $rutinitas]);
     }
 
     public function create()
     {
-        $rutinitas = Rutinitas::all();
-        if(sizeof($rutinitas) >= 1){
-            return redirect()->action('RutinitasController@index');
-        }
-
         return view('admin.rutinitas.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $rutinitas = Rutinitas::create([
             'text' => $request->text
         ]);
 
-        if($request->gambar != null) {
+        if ($request->gambar != null) {
             $file = $request->file('gambar');
-            $imageName = $rutinitas->id.'.rutinitas.'.$file->getClientOriginalExtension();
+            $imageName = $rutinitas->id . '.rutinitas.' . $file->getClientOriginalExtension();
             $path = $request->file('gambar')->storeAs('public/rutinitas/', $imageName);
-            $rutinitas->gambar = 'rutinitas/'.$imageName;
+            $rutinitas->gambar = 'rutinitas/' . $imageName;
             $rutinitas->save();
         }
 
@@ -57,27 +48,29 @@ class RutinitasController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'text' => 'required'
-        ]);
-
         $rutinitas = Rutinitas::find($id);
         $rutinitas->text = $request->text;
         $rutinitas->save();
 
-        if($request->gambar != null) {
-            $file = $request->file('gambar');
-            $imageName = $rutinitas->id.'.rutinitas.'.$file->getClientOriginalExtension();
-            $path = $request->file('gambar')->storeAs('public/rutinitas/', $imageName);
-            $rutinitas->gambar = 'rutinitas/'.$imageName;
+        if ($request->pilihan_gambar == "ganti") {
+            if ($request->gambar != null) {
+                $file = $request->file('gambar');
+                $imageName = $rutinitas->id . '.rutinitas.' . $file->getClientOriginalExtension();
+                $path = $request->file('gambar')->storeAs('public/rutinitas/', $imageName);
+                $rutinitas->gambar = 'rutinitas/' . $imageName;
+                $rutinitas->save();
+            }
+        } elseif ($request->pilihan_gambar == "hapus") {
+            $rutinitas->gambar = null;
             $rutinitas->save();
         }
 
         return redirect()->action('RutinitasController@index');
     }
 
-    public function destroy(Rutinitas $kepalaAsrama)
+    public function destroy($id)
     {
-        //
+        Rutinitas::destroy($id);
+        return redirect()->action('RutinitasController@index');
     }
 }
