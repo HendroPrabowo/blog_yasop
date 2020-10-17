@@ -74,6 +74,7 @@
                        <li><i class="fa fa-user"></i><a href="{{ url('/daftar_siswa') }}">Daftar Siswa</a></li>
                        <li><i class="fa fa-user"></i><a href="{{ url('/daftar_prestasi') }}">Daftar Prestasi</a></li>
                        <li><i class="fa fa-user"></i><a href="{{ url('/blog_siswa') }}">Blog Siswa</a></li>
+                       <li><i class="fa fa-user"></i><a href="{{ url('/alumni') }}">Alumni</a></li>
                    </ul>
                </li>
                <li class="menu-item-has-children active dropdown">

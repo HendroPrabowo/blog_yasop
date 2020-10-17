@@ -37,18 +37,18 @@ Route::post('register', 'AuthController@register');
 Route::get('/changepassword', 'AuthController@showChangePasswordForm');
 Route::post('/changepassword', 'AuthController@changePassword');
 
-Route::get('form', function(){
+Route::get('form', function () {
     return view('form');
 });
 
 // ROUTES YANG SEBENARNYA
 // Admin Page
-Route::get('/admin', function(){
+Route::get('/admin', function () {
     return view('admin.index');
 })->middleware('auth')->name('admin');
 
 // Authentication
-Route::get('/login', function(){
+Route::get('/login', function () {
     return view('admin.login');
 })->name('login');
 Route::post('/login', 'AuthController@login');
@@ -87,6 +87,8 @@ Route::resource('organisasi_siswa', 'OrganisasiSiswaController')->middleware('au
 Route::resource('daftar_siswa', 'DaftarSiswaController')->middleware('auth');
 Route::resource('daftar_prestasi', 'DaftarPrestasiController')->middleware('auth');
 Route::resource('blog_siswa', 'BlogSiswaController')->middleware('auth');
+Route::resource('alumni', 'AlumniController')->middleware('auth');
+Route::get('template/alumni', 'AlumniController@template')->middleware('auth');
 
 //User Biasa
 //Tentang Asrama
@@ -119,8 +121,9 @@ Route::get('kesiswaan/organisasi_siswa', 'KesiswaanController@organisasi_siswa')
 Route::get('kesiswaan/daftar_siswa', 'KesiswaanController@daftar_siswa');
 Route::get('kesiswaan/daftar_prestasi', 'KesiswaanController@daftar_prestasi');
 Route::get('kesiswaan/blog_siswa', 'KesiswaanController@blog_siswa');
+Route::get('kesiswaan/alumni', 'KesiswaanController@alumni');
 
-Route::get('depan', function(){
+Route::get('depan', function () {
     return view('layouts_blog.depan');
 });
 

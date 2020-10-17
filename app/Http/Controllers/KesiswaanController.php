@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Alumni;
 use Illuminate\Http\Request;
 use App\OrganisasiSiswa;
 use App\DaftarSiswa;
@@ -28,5 +29,10 @@ class KesiswaanController extends Controller
     public function blog_siswa(){
         $kepala_asrama = BlogSiswa::all();
         return view('kesiswaan.blog_siswa', ['blog_siswa' => $kepala_asrama]);
+    }
+
+    public function alumni(){
+        $kepala_asrama = Alumni::all();
+        return view('kesiswaan.alumni', ['alumni' => $kepala_asrama]);
     }
 }
