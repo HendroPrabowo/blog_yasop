@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Alumni;
 use App\Imports\AlumniImport;
+use App\NamaAngkatan;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -16,8 +17,9 @@ class AlumniController extends Controller
      */
     public function index()
     {
+        $angkatan = NamaAngkatan::all();
         $alumni = Alumni::paginate(20);
-        return view('admin.alumni.index', ['alumni' => $alumni]);
+        return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan]);
     }
 
     /**
@@ -44,10 +46,14 @@ class AlumniController extends Controller
 
         $i = 0;
         $array = Excel::toArray(new AlumniImport, request()->file('excel'));
+        $angkatan = NamaAngkatan::create([
+            'nama_angkatan' => $array[0][0][2]
+        ]);
         foreach ($array[0] as $alumni) {
-            if ($i > 0) {
+            if ($i > 1) {
                 Alumni::create([
-                    'nama' => $alumni[1]
+                    'nama' => $alumni[1],
+                    'nama_angkatan_id' => $angkatan->id
                 ]);
             }
             $i++;
@@ -112,5 +118,12 @@ class AlumniController extends Controller
     {
         $file = public_path() . '\template\alumni_template.xlsx';
         return response()->download($file);
+    }
+
+    public function getAlumniByAngkatan(Request $request) {
+        $angkatan = NamaAngkatan::all();
+        $nama_angkatan = NamaAngkatan::find($request->nama_angkatan);
+        $alumni = $nama_angkatan->alumni()->paginate(20);
+        return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan]);
     }
 }

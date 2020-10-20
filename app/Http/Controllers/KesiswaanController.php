@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Alumni;
+use App\NamaAngkatan;
 use Illuminate\Http\Request;
 use App\OrganisasiSiswa;
 use App\DaftarSiswa;
@@ -32,7 +33,15 @@ class KesiswaanController extends Controller
     }
 
     public function alumni(){
-        $kepala_asrama = Alumni::all();
-        return view('kesiswaan.alumni', ['alumni' => $kepala_asrama]);
+        $angkatan = NamaAngkatan::all();
+        $alumni = Alumni::paginate(20);
+        return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan]);
+    }
+
+    public function alumniByNamaAngkatan(Request $request) {
+        $angkatan = NamaAngkatan::all();
+        $angkatan_dipilih = NamaAngkatan::find($request->angkatan_id);
+        $alumni = $angkatan_dipilih->alumni()->paginate(20);
+        return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan]);
     }
 }

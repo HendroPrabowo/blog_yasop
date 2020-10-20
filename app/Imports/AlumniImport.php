@@ -15,7 +15,8 @@ class AlumniImport implements ToModel
     public function model(array $row)
     {
         return new Alumni([
-            'nama' => $row[1]
+            'nama' => $row[1],
+            'nama_angkatan' => $row[2]
         ]);
     }
 }

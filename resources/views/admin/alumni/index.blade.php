@@ -44,6 +44,26 @@
         </tr>
     </table>
 
+    <div class="container">
+        <form action="{{ url('/alumniRoute/getByAngkatan') }}" method="post">
+            @csrf
+            <label><b>Pilih Angkatan</b></label>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <select class="form-control" name="nama_angkatan">
+                            @foreach($angkatan as $val)
+                                <option value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="btn btn-primary" value="Pilih">
+                </div>
+            </div>
+        </form>
+    </div>
 
     <div class="container-fluid">
         <table class="table table-striped table-bordered">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlumniTable extends Migration
+class CreateNamaAngkatanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAlumniTable extends Migration
      */
     public function up()
     {
-        Schema::create('alumni', function (Blueprint $table) {
+        Schema::create('nama_angkatan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text("nama");
-            $table->integer('nama_angkatan_id');
+            $table->string('nama_angkatan', 500);
         });
     }
 
@@ -27,6 +26,6 @@ class CreateAlumniTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumni');
+        Schema::dropIfExists('nama_angkatan');
     }
 }
