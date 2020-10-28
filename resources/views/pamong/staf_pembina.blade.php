@@ -6,7 +6,7 @@
 </div>
 <h1 style="font-family: 'Times New Roman'">Staf Pembina</h1>
 <div class="container">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" style="font-family: 'Times New Roman'">
         <thead>
         <tr class="d-flex">
             <th class="col-1 text-center">No</th>

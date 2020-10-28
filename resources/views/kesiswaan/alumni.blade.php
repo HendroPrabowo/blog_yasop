@@ -6,24 +6,33 @@
     </div>
     <br>
 
-    <form action="{{ url('/kesiswaan/alumniByAngkatan') }}" method="post">
-        @csrf
-        <label><b>Pilih Angkatan</b></label>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <select class="form-control" name="angkatan_id">
-                        @foreach($angkatan as $val)
-                            <option value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="btn btn-primary" value="Pilih">
-            </div>
-        </div>
-    </form>
+    <select class="form-control" id="id_angkatan">
+        @if($angkatan_terpilih == 'semuaAngkatan')
+            <option value="semuaAngkatan">Semua Angkatan</option>
+        @else
+            <option  value="semuaAngkatan" selected>Semua Angkatan</option>
+        @endif
+        @foreach($angkatan as $val)
+            @if($val->nama_angkatan == $angkatan_terpilih)
+                <option selected value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
+            @else
+                <option value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
+            @endif
+        @endforeach
+    </select>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#id_angkatan').change(function(){
+                window.location.href = document.getElementById('id_angkatan').value;
+            });
+        });
+    </script>
+
+    <div style="margin-top: 20px; margin-bottom: 20px
+">
+        <h3><center>Angkatan : {{ $angkatan_terpilih }}</center></h3>
+    </div>
 
     <table class="table table-bordered table-striped">
         <thead>

@@ -32,16 +32,17 @@ class KesiswaanController extends Controller
         return view('kesiswaan.blog_siswa', ['blog_siswa' => $kepala_asrama]);
     }
 
-    public function alumni(){
+    public function alumni($angkatan_id){
+        $angkatan_terpilih = 'Semua Angkatan';
+        if($angkatan_id == 'semuaAngkatan') {
+            $angkatan = NamaAngkatan::all();
+            $alumni = Alumni::paginate(20);
+            return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_terpilih' => $angkatan_terpilih]);
+        }
+        $angkatan_temp = NamaAngkatan::find($angkatan_id);
+        $angkatan_terpilih = $angkatan_temp->nama_angkatan;
         $angkatan = NamaAngkatan::all();
-        $alumni = Alumni::paginate(20);
-        return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan]);
-    }
-
-    public function alumniByNamaAngkatan(Request $request) {
-        $angkatan = NamaAngkatan::all();
-        $angkatan_dipilih = NamaAngkatan::find($request->angkatan_id);
-        $alumni = $angkatan_dipilih->alumni()->paginate(20);
-        return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan]);
+        $alumni = Alumni::where('nama_angkatan_id', $angkatan_id)->paginate(20)->appends('nama_angkatan_id', $angkatan_id);
+        return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_terpilih' => $angkatan_terpilih]);
     }
 }

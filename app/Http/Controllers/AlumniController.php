@@ -17,9 +17,10 @@ class AlumniController extends Controller
      */
     public function index()
     {
+        $angkatan_aktif = "Semua Angkatan";
         $angkatan = NamaAngkatan::all();
         $alumni = Alumni::paginate(20);
-        return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan]);
+        return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_aktif' => $angkatan_aktif]);
     }
 
     /**
@@ -120,10 +121,18 @@ class AlumniController extends Controller
         return response()->download($file);
     }
 
-    public function getAlumniByAngkatan(Request $request) {
+    public function getAlumniByAngkatan(Request $request)
+    {
+        $angkatan_dipilih = NamaAngkatan::find($request->nama_angkatan);
         $angkatan = NamaAngkatan::all();
-        $nama_angkatan = NamaAngkatan::find($request->nama_angkatan);
-        $alumni = $nama_angkatan->alumni()->paginate(20);
-        return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan]);
+        $alumni = Alumni::where('nama_angkatan_id', $angkatan_dipilih->id)->get();
+        return view('admin.alumni.viewByAngkatan', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_aktif' => $angkatan_dipilih->nama_angkatan]);
+    }
+
+    public function deleteAlumniByAngkatan(Request $request)
+    {
+        Alumni::where('nama_angkatan_id', $request->nama_angkatan)->delete();
+        NamaAngkatan::destroy($request->nama_angkatan);
+        return redirect()->action('AlumniController@index');
     }
 }

@@ -88,7 +88,7 @@
                         <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_siswa') }}">Daftar Siswa</a>
                         <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_prestasi') }}">Data Prestasi</a>
                         <a class="dropdown-item" href="{{ url('/kesiswaan/blog_siswa') }}">Blog Siswa</a>
-                        <a class="dropdown-item" href="{{ url('/kesiswaan/alumni') }}">Alumni</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/alumni/semuaAngkatan') }}">Alumni</a>
                     </div>
                 </li>
                 <li class="nav-item">

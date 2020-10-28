@@ -146,12 +146,5 @@
             @endforeach
             </tbody>
         </table>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm"></div>
-                <div class="col-sm">{{ $alumni->links() }}</div>
-                <div class="col-sm"></div>
-            </div>
-        </div>
     </div>
 @endsection
