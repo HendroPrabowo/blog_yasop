@@ -85,6 +85,8 @@ Route::resource('lainnya', 'LainnyaController')->middleware('auth');
 //Kesiswaan
 Route::resource('organisasi_siswa', 'OrganisasiSiswaController')->middleware('auth');
 Route::resource('daftar_siswa', 'DaftarSiswaController')->middleware('auth');
+Route::get('daftarSiswaRoute/kosongkanKelas/{kelas}', 'DaftarSiswaController@kosongkanKelas')->middleware('auth');
+Route::get('template/daftarsiswa', 'DaftarSiswaController@template')->middleware('auth');
 Route::resource('daftar_prestasi', 'DaftarPrestasiController')->middleware('auth');
 Route::resource('blog_siswa', 'BlogSiswaController')->middleware('auth');
 Route::resource('alumni', 'AlumniController')->middleware('auth');
@@ -120,7 +122,7 @@ Route::get('kegiatan/minatbakat', 'KegiatanController@minatbakat');
 Route::get('kegiatan/lainnya', 'KegiatanController@lainnya');
 //Kesiswaan
 Route::get('kesiswaan/organisasi_siswa', 'KesiswaanController@organisasi_siswa');
-Route::get('kesiswaan/daftar_siswa', 'KesiswaanController@daftar_siswa');
+Route::get('kesiswaan/daftar_siswa/{kelas}', 'KesiswaanController@daftar_siswa');
 Route::get('kesiswaan/daftar_prestasi', 'KesiswaanController@daftar_prestasi');
 Route::get('kesiswaan/blog_siswa', 'KesiswaanController@blog_siswa');
 Route::get('kesiswaan/alumni/{id_angkatan}', 'KesiswaanController@alumni');

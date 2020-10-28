@@ -17,9 +17,9 @@ class KesiswaanController extends Controller
         return view('kesiswaan.organisasi_siswa', ['organisasi_siswa' => $organisasi_siswa]);
     }
 
-    public function daftar_siswa(){
-        $daftar_siswa = DaftarSiswa::all();
-        return view('kesiswaan.daftar_siswa', ['daftar_siswa' => $daftar_siswa]);
+    public function daftar_siswa($kelas){
+        $daftar_siswa = DaftarSiswa::where('kelas', $kelas)->paginate(20)->appends('kelas', $kelas);
+        return view('kesiswaan.daftar_siswa', ['daftar_siswa' => $daftar_siswa, 'kelas' => $kelas]);
     }
 
     public function daftar_prestasi(){

@@ -85,7 +85,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kesiswaan</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('/kesiswaan/organisasi_siswa') }}">Organisasi Siswa</a>
-                        <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_siswa') }}">Daftar Siswa</a>
+                        <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_siswa/X') }}">Daftar Siswa</a>
                         <a class="dropdown-item" href="{{ url('/kesiswaan/daftar_prestasi') }}">Data Prestasi</a>
                         <a class="dropdown-item" href="{{ url('/kesiswaan/blog_siswa') }}">Blog Siswa</a>
                         <a class="dropdown-item" href="{{ url('/kesiswaan/alumni/semuaAngkatan') }}">Alumni</a>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DaftarSiswa;
+use App\Imports\DaftarSiswaImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DaftarSiswaController extends Controller
 {
@@ -31,41 +33,47 @@ class DaftarSiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'no_induk' => 'required',
-            'nama' => 'required',
+            'excel' => 'required|mimes:xls,xlsx',
             'kelas' => 'required',
         ]);
 
-        $siswa = DaftarSiswa::create([
-            'no_induk' => $request->no_induk,
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-        ]);
-
-        return redirect()->action('DaftarSiswaController@index');
+        $i = 0;
+        $array = Excel::toArray(new DaftarSiswaImport, request()->file('excel'));
+        foreach ($array[0] as $daftar_siswa) {
+            if ($i > 0) {
+                DaftarSiswa::create([
+                    'no_induk' => $daftar_siswa[1],
+                    'nama' => $daftar_siswa[2],
+                    'kelas' => $request->kelas,
+                ]);
+            }
+            $i++;
+        }
+        return redirect('daftar_siswa/'.$request->kelas);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\DaftarSiswa  $daftarSiswa
+     * @param \App\DaftarSiswa $daftarSiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(DaftarSiswa $daftarSiswa)
+    public function show($kelas)
     {
-        //
+        $daftarSiswa = DaftarSiswa::where('kelas', $kelas)->get();
+        return view('admin.daftar_siswa.show', ['daftar_siswa' => $daftarSiswa, 'kelas' => $kelas]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\DaftarSiswa  $daftarSiswa
+     * @param \App\DaftarSiswa $daftarSiswa
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +85,8 @@ class DaftarSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DaftarSiswa  $daftarSiswa
+     * @param \Illuminate\Http\Request $request
+     * @param \App\DaftarSiswa $daftarSiswa
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -86,22 +94,19 @@ class DaftarSiswaController extends Controller
         $request->validate([
             'no_induk' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
         ]);
+        $siswa = DaftarSiswa::find($id);
+        $siswa->no_induk = $request->no_induk;
+        $siswa->nama = $request->nama;
+        $siswa->save();
 
-        $daftar_siswa = DaftarSiswa::find($id);
-        $daftar_siswa->no_induk = $request->no_induk;
-        $daftar_siswa->nama = $request->nama;
-        $daftar_siswa->kelas = $request->kelas;
-        $daftar_siswa->save();
-
-        return redirect()->action('DaftarSiswaController@index');
+        return redirect('daftar_siswa/'.$siswa->kelas);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DaftarSiswa  $daftarSiswa
+     * @param \App\DaftarSiswa $daftarSiswa
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -109,5 +114,16 @@ class DaftarSiswaController extends Controller
         DaftarSiswa::destroy($id);
 
         return redirect()->action('DaftarSiswaController@index');
+    }
+
+    public function template()
+    {
+        $file = public_path() . '\template\daftar_siswa_template.xlsx';
+        return response()->download($file);
+    }
+
+    public function kosongkanKelas($kelas) {
+        DaftarSiswa::where('kelas', $kelas)->delete();
+        return redirect('daftar_siswa/'.$kelas);
     }
 }

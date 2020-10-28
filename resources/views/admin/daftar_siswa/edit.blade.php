@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    <h3>Daftar Siswa</h1>
+    <h1>Daftar Siswa</h1>
         <div class="card-body card-block">
             <form action="{{ url('/daftar_siswa/'.$daftar_siswa->id) }}" method="post">
                 @csrf
@@ -38,14 +38,6 @@
                 <div class="form-group">
                     <label for="">Nama</label>
                     <input type="text" name="nama" value="{{ $daftar_siswa->nama }}" required class="form-control">
-                </div>
-
-                @error('kelas')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <div class="form-group">
-                    <label for="">Kelas</label>
-                    <input type="text" name="kelas" value="{{ $daftar_siswa->kelas }}" required class="form-control">
                 </div>
 
                 <input type="submit" name="submit" value="Edit" combak class="btn btn-success">

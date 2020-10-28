@@ -8,4 +8,5 @@ class DaftarSiswa extends Model
 {
     protected $table = "daftar_siswa";
     protected $guarded = ['id'];
+    public $timestamps = false;
 }
