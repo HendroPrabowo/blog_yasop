@@ -70,7 +70,9 @@ class AlumniController extends Controller
      */
     public function show($id)
     {
-        //
+        $angkatan = NamaAngkatan::find($id);
+        $alumni = Alumni::where('nama_angkatan_id', $id)->get();
+        return view('admin.alumni.show', ['alumni' => $alumni, 'angkatan' => $angkatan->nama_angkatan]);
     }
 
     /**
@@ -98,9 +100,10 @@ class AlumniController extends Controller
             'nama' => 'required'
         ]);
         $alumni = Alumni::find($id);
+        $angkatan_id = $alumni->angkatan->id;
         $alumni->nama = $request->nama;
         $alumni->save();
-        return redirect()->action('AlumniController@index');
+        return redirect('alumni/'.$angkatan_id);
     }
 
     /**
@@ -111,8 +114,10 @@ class AlumniController extends Controller
      */
     public function destroy($id)
     {
+        $alumni = Alumni::find($id);
+        $angkatan_id = $alumni->angkatan->id;
         Alumni::destroy($id);
-        return redirect()->action('AlumniController@index');
+        return redirect('alumni/'.$angkatan_id);
     }
 
     public function template()
@@ -121,18 +126,8 @@ class AlumniController extends Controller
         return response()->download($file);
     }
 
-    public function getAlumniByAngkatan(Request $request)
-    {
-        $angkatan_dipilih = NamaAngkatan::find($request->nama_angkatan);
-        $angkatan = NamaAngkatan::all();
-        $alumni = Alumni::where('nama_angkatan_id', $angkatan_dipilih->id)->get();
-        return view('admin.alumni.viewByAngkatan', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_aktif' => $angkatan_dipilih->nama_angkatan]);
-    }
-
-    public function deleteAlumniByAngkatan(Request $request)
-    {
-        Alumni::where('nama_angkatan_id', $request->nama_angkatan)->delete();
-        NamaAngkatan::destroy($request->nama_angkatan);
+    public function deleteAngkatan($id) {
+        NamaAngkatan::destroy($id);
         return redirect()->action('AlumniController@index');
     }
 }

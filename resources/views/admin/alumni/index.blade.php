@@ -44,66 +44,8 @@
         </tr>
     </table>
 
-    <table class="table">
-        <tr class="d-flex">
-            <td class="col-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>Pilih Angkatan</b></h5>
-                        <div class="container">
-                            <form action="{{ url('/alumniRoute/getByAngkatan') }}" method="post">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="form-group">
-                                            <select class="form-control" name="nama_angkatan">
-                                                @foreach($angkatan as $val)
-                                                    <option value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="submit" class="btn btn-primary" value="Pilih">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="col-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>Hapus Angkatan</b></h5>
-                        <div class="container">
-                            <form action="{{ url('/alumniRoute/deleteByAngkatan') }}" method="post">
-{{--                                @method('DELETE')--}}
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="form-group">
-                                            <select class="form-control" name="nama_angkatan">
-                                                @foreach($angkatan as $val)
-                                                    <option value="{{ $val->id }}">{{ $val->nama_angkatan }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="submit" class="btn btn-danger" value="Hapus">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-
     <div class="container" style="margin-bottom: 20px">
-        <h3><center>{{ $angkatan_aktif }}</center></h3>
+        <h3><center>Semua Angkatan</center></h3>
     </div>
 
     <div class="container-fluid">
@@ -111,30 +53,29 @@
             <thead>
             <tr class="d-flex">
                 <th class="col-1 text-center">No</th>
-                <th class="col-9 text-center">Nama</th>
-                <th class="col-2 text-center">Action</th>
+                <th class="col-8 text-center">Angkatan</th>
+                <th class="col-3 text-center">Action</th>
             </tr>
             </thead>
             <tbody>
             @php
                 $i = 1;
             @endphp
-            @foreach($alumni as $val)
+            @foreach($angkatan as $val)
                 <tr class="d-flex">
                     <td class="col-1 text-center">{{ $i }}</td>
-                    <td class="col-9">
+                    <td class="col-8">
                         <div class="container text-center">
                             <div class="row">
                                 <div class="col">
-                                    <p class="font-weight-bold" style="font-size: x-large">{{ $val->nama }}</p>
+                                    <p class="font-weight-bold" style="font-size: x-large">{{ $val->nama_angkatan }}</p>
                                 </div>
                             </div>
                         </div>
                     </td>
-                    <td class="col-2">
-                        <a href="{{ url('/alumni/'.$val->id.'/edit') }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ url('/alumni/'.$val->id) }}" method="POST">
-                            @method('DELETE')
+                    <td class="col-3">
+                        <a href="{{ url('/alumni/'.$val->id) }}" class="btn btn-success btn-sm">View</a>
+                        <form action="{{ url('/alumniRoute/deleteAngkatan/'.$val->id) }}" method="POST">
                             @csrf
                             <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                         </form>
@@ -146,12 +87,5 @@
             @endforeach
             </tbody>
         </table>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm"></div>
-                <div class="col-sm">{{ $alumni->links() }}</div>
-                <div class="col-sm"></div>
-            </div>
-        </div>
     </div>
 @endsection

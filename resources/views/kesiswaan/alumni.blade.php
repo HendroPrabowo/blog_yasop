@@ -29,12 +29,11 @@
         });
     </script>
 
-    <div style="margin-top: 20px; margin-bottom: 20px
-">
+    <div style="margin-top: 20px; margin-bottom: 20px; font-family: 'Times New Roman'">
         <h3><center>Angkatan : {{ $angkatan_terpilih }}</center></h3>
     </div>
 
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" style="font-family: 'Times New Roman';">
         <thead>
         <tr>
             <th>No</th>

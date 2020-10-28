@@ -90,8 +90,7 @@ Route::resource('blog_siswa', 'BlogSiswaController')->middleware('auth');
 Route::resource('alumni', 'AlumniController')->middleware('auth');
 Route::get('template/alumni', 'AlumniController@template')->middleware('auth');
 Route::get('alumniRoute/getByAngkatan', 'AlumniController@index')->middleware('auth');
-Route::post('alumniRoute/getByAngkatan', 'AlumniController@getAlumniByAngkatan')->middleware('auth');
-Route::post('alumniRoute/deleteByAngkatan', 'AlumniController@deleteAlumniByAngkatan')->middleware('auth');
+Route::post('alumniRoute/deleteAngkatan/{angkatan_id}', 'AlumniController@deleteAngkatan')->middleware('auth');
 
 //User Biasa
 //Tentang Asrama
