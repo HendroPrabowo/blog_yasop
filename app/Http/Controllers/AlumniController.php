@@ -18,7 +18,7 @@ class AlumniController extends Controller
     public function index()
     {
         $angkatan_aktif = "Semua Angkatan";
-        $angkatan = NamaAngkatan::all();
+        $angkatan = NamaAngkatan::orderBy('nama_angkatan')->get();
         $alumni = Alumni::paginate(20);
         return view('admin.alumni.index', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_aktif' => $angkatan_aktif]);
     }

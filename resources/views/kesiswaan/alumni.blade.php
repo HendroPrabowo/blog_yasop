@@ -1,6 +1,20 @@
 @extends('layouts_blog.layout')
 
 @section('isi')
+    <style>
+        .gambar-latar{}
+        div.gambar-latar > img {
+            opacity: 0.1;
+            position: fixed;
+            margin: auto auto;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <div class="gambar-latar">
+        <img src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}">
+    </div>
+
     <div class="header" style="margin-top: 50px">
         <center><h1 style="font-family: 'Times New Roman'">Alumni</h1></center>
     </div>

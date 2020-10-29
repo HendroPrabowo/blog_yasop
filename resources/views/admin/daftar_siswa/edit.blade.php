@@ -24,13 +24,13 @@
             <form action="{{ url('/daftar_siswa/'.$daftar_siswa->id) }}" method="post">
                 @csrf
                 @method('PUT')
-                @error('no_induk')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <div class="form-group">
-                    <label for="">No Induk</label>
-                    <input type="text" name="no_induk" value="{{ $daftar_siswa->no_induk }}" required class="form-control">
-                </div>
+{{--                @error('no_induk')--}}
+{{--                    <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                @enderror--}}
+{{--                <div class="form-group">--}}
+{{--                    <label for="">No Induk</label>--}}
+{{--                    <input type="text" name="no_induk" value="{{ $daftar_siswa->no_induk }}" required class="form-control">--}}
+{{--                </div>--}}
 
                 @error('nama')
                     <div class="alert alert-danger">{{ $message }}</div>

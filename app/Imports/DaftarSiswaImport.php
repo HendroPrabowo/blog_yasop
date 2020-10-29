@@ -15,8 +15,7 @@ class DaftarSiswaImport implements ToModel
     public function model(array $row)
     {
         return new DaftarSiswa([
-            'no_induk' => $row[1],
-            'nama' => $row[2],
+            'nama' => $row[1],
         ]);
     }
 }

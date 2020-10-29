@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>No Induk</th>
+{{--                        <th>No Induk</th>--}}
                         <th>Nama Siswa</th>
                         <th>Kelas</th>
                         <th>Action</th>
@@ -36,7 +36,7 @@
             @foreach($daftar_siswa as $value)
                 <tr>
                     <td>{{ $i }}</td>
-                    <td>{{ $value->no_induk }}</td>
+{{--                    <td>{{ $value->no_induk }}</td>--}}
                     <td>{{ $value->nama }}</td>
                     <td>{{ $value->kelas }}</td>
                     <td>

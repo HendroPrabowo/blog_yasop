@@ -48,8 +48,7 @@ class DaftarSiswaController extends Controller
         foreach ($array[0] as $daftar_siswa) {
             if ($i > 0) {
                 DaftarSiswa::create([
-                    'no_induk' => $daftar_siswa[1],
-                    'nama' => $daftar_siswa[2],
+                    'nama' => $daftar_siswa[1],
                     'kelas' => $request->kelas,
                 ]);
             }
@@ -92,11 +91,9 @@ class DaftarSiswaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'no_induk' => 'required',
             'nama' => 'required',
         ]);
         $siswa = DaftarSiswa::find($id);
-        $siswa->no_induk = $request->no_induk;
         $siswa->nama = $request->nama;
         $siswa->save();
 

@@ -34,14 +34,13 @@ class KesiswaanController extends Controller
 
     public function alumni($angkatan_id){
         $angkatan_terpilih = 'Semua Angkatan';
+        $angkatan = NamaAngkatan::orderBy('nama_angkatan')->get();
         if($angkatan_id == 'semuaAngkatan') {
-            $angkatan = NamaAngkatan::all();
             $alumni = Alumni::paginate(20);
             return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_terpilih' => $angkatan_terpilih]);
         }
         $angkatan_temp = NamaAngkatan::find($angkatan_id);
         $angkatan_terpilih = $angkatan_temp->nama_angkatan;
-        $angkatan = NamaAngkatan::all();
         $alumni = Alumni::where('nama_angkatan_id', $angkatan_id)->paginate(20)->appends('nama_angkatan_id', $angkatan_id);
         return view('kesiswaan.alumni', ['alumni' => $alumni, 'angkatan' => $angkatan, 'angkatan_terpilih' => $angkatan_terpilih]);
     }

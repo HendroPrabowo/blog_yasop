@@ -1,6 +1,20 @@
 @extends('layouts_blog.layout')
 
 @section('isi')
+    <style>
+        .gambar-latar{}
+        div.gambar-latar > img {
+            opacity: 0.1;
+            position: fixed;
+            margin: auto auto;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <div class="gambar-latar">
+        <img src="{{ asset('image/logo/yayasan_soposurung_logo.png') }}">
+    </div>
+
     <div class="header" style="margin-top: 50px">
         <center><h1 style="font-family: 'Times New Roman'">Daftar Siswa</h1></center>
     </div>
@@ -37,7 +51,7 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>No Induk</th>
+{{--            <th>No Induk</th>--}}
             <th>Nama Siswa</th>
             <th>Kelas</th>
         </tr>
@@ -49,7 +63,7 @@
         @foreach($daftar_siswa as $value)
             <tr>
                 <td>{{ $i }}</td>
-                <td>{{ $value->no_induk }}</td>
+{{--                <td>{{ $value->no_induk }}</td>--}}
                 <td>{{ $value->nama }}</td>
                 <td>{{ $value->kelas }}</td>
             </tr>
