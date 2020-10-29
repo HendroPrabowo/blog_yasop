@@ -9,6 +9,7 @@
             margin: auto auto;
             left: 0;
             right: 0;
+            height: 90%;
         }
     </style>
     <div class="gambar-latar">
