@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FasilitasDeskripsi;
 use App\Praktikum;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class PraktikumController extends Controller
     public function index()
     {
         $praktikum = Praktikum::paginate(5);
-        return view('admin.praktikum.index', ['praktikum' => $praktikum]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'praktikum')->first();
+        return view('admin.praktikum.index', ['praktikum' => $praktikum, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class PraktikumController extends Controller
     {
         Praktikum::destroy($id);
         return redirect()->action('PraktikumController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.praktikum.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('PraktikumController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'praktikum',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('PraktikumController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.praktikum.deskripsicreate');
     }
 }

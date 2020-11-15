@@ -77,6 +77,42 @@ Route::resource('kesehatan', 'KesehatanController')->middleware('auth');
 Route::resource('it', 'ItController')->middleware('auth');
 Route::resource('olahraga', 'OlahragaController')->middleware('auth');
 Route::resource('sosial', 'SosialController')->middleware('auth');
+
+Route::get('akomodasiRoute/deskripsicreate', 'AkomodasiController@createDeskripsi')->middleware('auth');
+Route::post('akomodasiRoute/deskripsisave', 'AkomodasiController@saveDeskripsi')->middleware('auth');
+Route::get('akomodasiRoute/edit/{fasilitas_desripsi_id}', 'AkomodasiController@editDeskripsi')->middleware('auth');
+Route::post('akomodasiRoute/edit/{fasilitas_desripsi_id}', 'AkomodasiController@updateDeskripsi')->middleware('auth');
+
+Route::get('belajarRoute/deskripsicreate', 'BelajarController@createDeskripsi')->middleware('auth');
+Route::post('belajarRoute/deskripsisave', 'BelajarController@saveDeskripsi')->middleware('auth');
+Route::get('belajarRoute/edit/{fasilitas_desripsi_id}', 'BelajarController@editDeskripsi')->middleware('auth');
+Route::post('belajarRoute/edit/{fasilitas_desripsi_id}', 'BelajarController@updateDeskripsi')->middleware('auth');
+
+Route::get('praktikumRoute/deskripsicreate', 'PraktikumController@createDeskripsi')->middleware('auth');
+Route::post('praktikumRoute/deskripsisave', 'PraktikumController@saveDeskripsi')->middleware('auth');
+Route::get('praktikumRoute/edit/{fasilitas_desripsi_id}', 'PraktikumController@editDeskripsi')->middleware('auth');
+Route::post('praktikumRoute/edit/{fasilitas_desripsi_id}', 'PraktikumController@updateDeskripsi')->middleware('auth');
+
+Route::get('kesehatanRoute/deskripsicreate', 'KesehatanController@createDeskripsi')->middleware('auth');
+Route::post('kesehatanRoute/deskripsisave', 'KesehatanController@saveDeskripsi')->middleware('auth');
+Route::get('kesehatanRoute/edit/{fasilitas_desripsi_id}', 'KesehatanController@editDeskripsi')->middleware('auth');
+Route::post('kesehatanRoute/edit/{fasilitas_desripsi_id}', 'KesehatanController@updateDeskripsi')->middleware('auth');
+
+Route::get('itRoute/deskripsicreate', 'ItController@createDeskripsi')->middleware('auth');
+Route::post('itRoute/deskripsisave', 'ItController@saveDeskripsi')->middleware('auth');
+Route::get('itRoute/edit/{fasilitas_desripsi_id}', 'ItController@editDeskripsi')->middleware('auth');
+Route::post('itRoute/edit/{fasilitas_desripsi_id}', 'ItController@updateDeskripsi')->middleware('auth');
+
+Route::get('olahragaRoute/deskripsicreate', 'OlahragaController@createDeskripsi')->middleware('auth');
+Route::post('olahragaRoute/deskripsisave', 'OlahragaController@saveDeskripsi')->middleware('auth');
+Route::get('olahragaRoute/edit/{fasilitas_desripsi_id}', 'OlahragaController@editDeskripsi')->middleware('auth');
+Route::post('olahragaRoute/edit/{fasilitas_desripsi_id}', 'OlahragaController@updateDeskripsi')->middleware('auth');
+
+Route::get('sosialRoute/deskripsicreate', 'SosialController@createDeskripsi')->middleware('auth');
+Route::post('sosialRoute/deskripsisave', 'SosialController@saveDeskripsi')->middleware('auth');
+Route::get('sosialRoute/edit/{fasilitas_desripsi_id}', 'SosialController@editDeskripsi')->middleware('auth');
+Route::post('sosialRoute/edit/{fasilitas_desripsi_id}', 'SosialController@updateDeskripsi')->middleware('auth');
+
 //Kegiatan
 Route::resource('ekstrakurikuler', 'EkstrakurikulerController')->middleware('auth');
 Route::resource('rutinitas', 'RutinitasController')->middleware('auth');

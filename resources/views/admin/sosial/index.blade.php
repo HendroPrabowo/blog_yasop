@@ -11,6 +11,12 @@
 @section('content')
     <div>
         <h3>Sosial</h3>
+        @if($deskripsi != null)
+            <p>{{ $deskripsi->deskripsi }}</p>
+            <a href="{{ url('/sosialRoute/edit/'.$deskripsi->id) }}" class="btn btn-success">Ubah Deskripsi</a>
+        @else
+            <a href="{{ url('/sosialRoute/deskripsicreate') }}" class="btn btn-success">Tambah Deskripsi</a>
+        @endif
     </div>
 
     <a href="{{ url('/sosial/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Sosial</a>

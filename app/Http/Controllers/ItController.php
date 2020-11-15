@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FasilitasDeskripsi;
 use App\It;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class ItController extends Controller
     public function index()
     {
         $it = It::paginate(5);
-        return view('admin.it.index', ['it' => $it]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'it')->first();
+        return view('admin.it.index', ['it' => $it, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class ItController extends Controller
     {
         It::destroy($id);
         return redirect()->action('ItController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.it.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('ItController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'it',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('ItController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.it.deskripsicreate');
     }
 }

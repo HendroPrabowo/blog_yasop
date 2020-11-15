@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Akomodasi;
+use App\FasilitasDeskripsi;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AkomodasiController extends Controller
 {
     public function index()
     {
         $akomodasi = Akomodasi::paginate(5);
-        return view('admin.akomodasi.index', ['akomodasi' => $akomodasi]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'akomodasi')->first();
+        return view('admin.akomodasi.index', ['akomodasi' => $akomodasi, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +75,35 @@ class AkomodasiController extends Controller
     {
         Akomodasi::destroy($id);
         return redirect()->action('AkomodasiController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.akomodasi.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('AkomodasiController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'akomodasi',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('AkomodasiController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.akomodasi.deskripsicreate');
     }
 }

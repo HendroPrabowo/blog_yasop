@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FasilitasDeskripsi;
 use App\Olahraga;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class OlahragaController extends Controller
     public function index()
     {
         $olahraga = Olahraga::paginate(5);
-        return view('admin.olahraga.index', ['olahraga' => $olahraga]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'olahraga')->first();
+        return view('admin.olahraga.index', ['olahraga' => $olahraga, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class OlahragaController extends Controller
     {
         Olahraga::destroy($id);
         return redirect()->action('OlahragaController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.olahraga.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('OlahragaController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'olahraga',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('OlahragaController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.olahraga.deskripsicreate');
     }
 }

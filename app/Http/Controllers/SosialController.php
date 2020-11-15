@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FasilitasDeskripsi;
 use App\Sosial;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class SosialController extends Controller
     public function index()
     {
         $sosial = Sosial::paginate(5);
-        return view('admin.sosial.index', ['sosial' => $sosial]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'sosial')->first();
+        return view('admin.sosial.index', ['sosial' => $sosial, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class SosialController extends Controller
     {
         Sosial::destroy($id);
         return redirect()->action('SosialController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.sosial.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('SosialController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'sosial',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('SosialController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.sosial.deskripsicreate');
     }
 }

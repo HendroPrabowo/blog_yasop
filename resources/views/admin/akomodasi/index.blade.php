@@ -1,16 +1,22 @@
 @extends('layouts.layout')
 
 @section('breadcrumb_title')
-<h1>Akomodasi</h1>
+    <h1>Akomodasi</h1>
 @endsection
 
 @section('breadcrumb_list')
-<li class="active">Akomodasi</li>
+    <li class="active">Akomodasi</li>
 @endsection
 
 @section('content')
     <div>
         <h3>Akomodasi</h3>
+        @if($deskripsi != null)
+            <p>{{ $deskripsi->deskripsi }}</p>
+            <a href="{{ url('/akomodasiRoute/edit/'.$deskripsi->id) }}" class="btn btn-success">Ubah Deskripsi</a>
+        @else
+            <a href="{{ url('/akomodasiRoute/deskripsicreate') }}" class="btn btn-success">Tambah Deskripsi</a>
+        @endif
     </div>
 
     <a href="{{ url('/akomodasi/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Akomodasi</a>
@@ -34,9 +40,11 @@
                     <td class="col-1 text-center">{{ $i }}</td>
                     <td class="col-3">
                         @if($val->gambar != null)
-                            <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}" style="height: 4cm; width: 3cm">
+                            <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}"
+                                 style="height: 4cm; width: 3cm">
                         @else
-                            <img class="rounded mx-auto d-block" src="{{ asset('image/logo/user.svg')  }}" style="height: 4cm; width: 3cm">
+                            <img class="rounded mx-auto d-block" src="{{ asset('image/logo/user.svg')  }}"
+                                 style="height: 4cm; width: 3cm">
                         @endif
                     </td>
                     <td class="col-6">

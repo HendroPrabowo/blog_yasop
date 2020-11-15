@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FasilitasDeskripsi;
 use App\Kesehatan;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class KesehatanController extends Controller
     public function index()
     {
         $kesehatan = Kesehatan::paginate(5);
-        return view('admin.kesehatan.index', ['kesehatan' => $kesehatan]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'kesehatan')->first();
+        return view('admin.kesehatan.index', ['kesehatan' => $kesehatan, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class KesehatanController extends Controller
     {
         Kesehatan::destroy($id);
         return redirect()->action('KesehatanController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.kesehatan.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('KesehatanController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'kesehatan',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('KesehatanController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.kesehatan.deskripsicreate');
     }
 }

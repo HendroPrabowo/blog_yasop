@@ -4,6 +4,9 @@
     <div class="header" style="margin-top: 50px">
         <center><h1 style="font-family: 'Times New Roman'">Belajar</h1></center>
     </div>
+    @if($deskripsi != null)
+        <p>{{ $deskripsi->deskripsi }}</p>
+    @endif
     <br>
 
     @php

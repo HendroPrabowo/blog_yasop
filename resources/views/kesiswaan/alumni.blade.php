@@ -73,9 +73,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-2">{{ $alumni->links() }}</div>
-            <div class="col-md-5"></div>
+{{--            <div class="col-md-5"></div>--}}
+            <div class="col-md-12">{{ $alumni->links() }}</div>
+{{--            <div class="col-md-5"></div>--}}
         </div>
     </div>
 

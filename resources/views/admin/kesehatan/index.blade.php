@@ -11,6 +11,12 @@
 @section('content')
     <div>
         <h3>Kesehatan</h3>
+        @if($deskripsi != null)
+            <p>{{ $deskripsi->deskripsi }}</p>
+            <a href="{{ url('/kesehatanRoute/edit/'.$deskripsi->id) }}" class="btn btn-success">Ubah Deskripsi</a>
+        @else
+            <a href="{{ url('/kesehatanRoute/deskripsicreate') }}" class="btn btn-success">Tambah Deskripsi</a>
+        @endif
     </div>
 
     <a href="{{ url('/kesehatan/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Kesehatan</a>

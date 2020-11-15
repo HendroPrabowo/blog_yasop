@@ -11,6 +11,12 @@
 @section('content')
     <div>
         <h3>Praktikum</h3>
+        @if($deskripsi != null)
+            <p>{{ $deskripsi->deskripsi }}</p>
+            <a href="{{ url('/praktikumRoute/edit/'.$deskripsi->id) }}" class="btn btn-success">Ubah Deskripsi</a>
+        @else
+            <a href="{{ url('/praktikumRoute/deskripsicreate') }}" class="btn btn-success">Tambah Deskripsi</a>
+        @endif
     </div>
 
     <a href="{{ url('/praktikum/create') }}" class="btn btn-success" style="margin: 10px 0px">Tambah Praktikum</a>
@@ -34,9 +40,11 @@
                     <td class="col-1 text-center">{{ $i }}</td>
                     <td class="col-3">
                         @if($val->gambar != null)
-                            <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}" style="height: 4cm; width: 3cm">
+                            <img class="rounded mx-auto d-block" src="{{ asset('storage/'.$val->gambar) }}"
+                                 style="height: 4cm; width: 3cm">
                         @else
-                            <img class="rounded mx-auto d-block" src="{{ asset('image/logo/user.svg')  }}" style="height: 4cm; width: 3cm">
+                            <img class="rounded mx-auto d-block" src="{{ asset('image/logo/user.svg')  }}"
+                                 style="height: 4cm; width: 3cm">
                         @endif
                     </td>
                     <td class="col-6">

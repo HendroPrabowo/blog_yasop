@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Belajar;
+use App\FasilitasDeskripsi;
 use Illuminate\Http\Request;
 
 class BelajarController extends Controller
@@ -10,7 +11,8 @@ class BelajarController extends Controller
     public function index()
     {
         $belajar = Belajar::paginate(5);
-        return view('admin.belajar.index', ['belajar' => $belajar]);
+        $deskripsi = FasilitasDeskripsi::where('fasilitas', 'belajar')->first();
+        return view('admin.belajar.index', ['belajar' => $belajar, 'deskripsi' => $deskripsi]);
     }
 
     public function create()
@@ -72,5 +74,35 @@ class BelajarController extends Controller
     {
         Belajar::destroy($id);
         return redirect()->action('BelajarController@index');
+    }
+
+    public function editDeskripsi($id) {
+        $deskripsi = FasilitasDeskripsi::find($id);
+        return view('admin.belajar.deskripsi', ['deskripsi' => $deskripsi]);
+    }
+
+    public function updateDeskripsi(Request $request, $id) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        $deskripsi = FasilitasDeskripsi::find($id);
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->action('BelajarController@index');
+    }
+
+    public function saveDeskripsi(Request $request) {
+        $request->validate([
+            'deskripsi' => 'required'
+        ]);
+        FasilitasDeskripsi::create([
+            'fasilitas' => 'belajar',
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->action('BelajarController@index');
+    }
+
+    public function createDeskripsi() {
+        return view('admin.belajar.deskripsicreate');
     }
 }
