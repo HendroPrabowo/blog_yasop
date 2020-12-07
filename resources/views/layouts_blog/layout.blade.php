@@ -63,15 +63,23 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fasilitas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('/fasilitas/akomodasi') }}">Akomodasi</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/belajar') }}">Belajar</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/praktikum') }}">Praktikum</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/kesehatan') }}">Kesehatan</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/it') }}">IT</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/olahraga') }}">Olahraga</a>
-                        <a class="dropdown-item" href="{{ url('/fasilitas/sosial') }}">Sosial</a>
+                        @foreach($fasilitas_menu as $val)
+                            <a class="dropdown-item" href="{{ url('/fasilitasmenu/blog/'.$val->id) }}">{{ $val->nama_menu }}</a>
+                        @endforeach
                     </div>
                 </li>
+{{--                <li class="nav-item dropdown">--}}
+{{--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fasilitas</a>--}}
+{{--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/akomodasi') }}">Akomodasi</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/belajar') }}">Belajar</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/praktikum') }}">Praktikum</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/kesehatan') }}">Kesehatan</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/it') }}">IT</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/olahraga') }}">Olahraga</a>--}}
+{{--                        <a class="dropdown-item" href="{{ url('/fasilitas/sosial') }}">Sosial</a>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kegiatan</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

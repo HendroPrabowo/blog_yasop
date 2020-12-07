@@ -47,17 +47,20 @@
                    </ul>
                </li>
                <li class="menu-item-has-children active dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Fasilitas</a>
-                   <ul class="sub-menu children dropdown-menu">
-                       <li><i class="fa fa-user"></i><a href="{{ url('/akomodasi') }}">Akomodasi</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/belajar') }}">Belajar</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/praktikum') }}">Praktikum</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/kesehatan') }}">Kesehatan</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/it') }}">IT</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/olahraga') }}">Olahraga</a></li>
-                       <li><i class="fa fa-user"></i><a href="{{ url('/sosial') }}">Sosial</a></li>
-                   </ul>
+                   <a href="{{ url('/fasilitasmenu') }}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Fasilitas</a>
                </li>
+{{--               <li class="menu-item-has-children active dropdown">--}}
+{{--                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Fasilitas</a>--}}
+{{--                   <ul class="sub-menu children dropdown-menu">--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/akomodasi') }}">Akomodasi</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/belajar') }}">Belajar</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/praktikum') }}">Praktikum</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/kesehatan') }}">Kesehatan</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/it') }}">IT</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/olahraga') }}">Olahraga</a></li>--}}
+{{--                       <li><i class="fa fa-user"></i><a href="{{ url('/sosial') }}">Sosial</a></li>--}}
+{{--                   </ul>--}}
+{{--               </li>--}}
                <li class="menu-item-has-children active dropdown">
                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Kegiatan</a>
                    <ul class="sub-menu children dropdown-menu">

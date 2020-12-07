@@ -18,3 +18,6 @@
 <h1>Action : {{ action('PostController@home') }}</h1>
 <a href='{{ action("TentangAsramaController@visimisi") }}'>Link</a>
 ```
+
+##### To do
+Delete fasilitas menu, controller, model, database table
