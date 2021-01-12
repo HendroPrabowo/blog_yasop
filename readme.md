@@ -4,6 +4,7 @@
 # How to use
 - Clone the project
 - Composer install or composer update
+- BEFORE MIGRATE COMMENT ISI FUNSGI BOOT DALAM app/Providers/AppServiceProvider.php
 - Migrate the db with php artisan migrate
 - Link storage laravel with php artisan
 - Create new user from register router
