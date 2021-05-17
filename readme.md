@@ -22,3 +22,14 @@
 
 ##### To do
 Delete fasilitas menu, controller, model, database table
+
+## Notes
+Kalau error waktu menjalankan `php artisan serve` atau `php artisan migrate`, comment dulu fungsi di `app\Providers\AppServiceProvider` di fungsi ini :
+```
+public function boot()
+    {
+        // Comment ini
+        // $fasilitas_menu = FasilitasMenu::all();
+        // View::share('fasilitas_menu', $fasilitas_menu);
+    }
+```

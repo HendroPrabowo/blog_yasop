@@ -127,6 +127,7 @@ class AlumniController extends Controller
     }
 
     public function deleteAngkatan($id) {
+        Alumni::where('nama_angkatan_id', $id)->delete();
         NamaAngkatan::destroy($id);
         return redirect()->action('AlumniController@index');
     }
