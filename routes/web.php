@@ -11,15 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('layouts_blog.depan');
-// });
 
 // Dashboard Blog
-Route::get('/index', function () {
-    // return view('layouts_blog/index');
-    return view('layouts_blog.depan');
-});
+Route::get('/index', 'HomeController@index');
 
 // Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -61,7 +55,7 @@ Route::resource('carousel', 'CarouselController')->middleware('auth');
 Route::resource('visimisi', 'VisimisiController')->middleware('auth');
 Route::resource('sejarah', 'SejarahController')->middleware('auth');
 Route::resource('pendiri', 'PendiriController')->middleware('auth');
-Route::resource('lokasi', 'LokasiController')->middleware('auth');
+Route::resource('informasi', 'LokasiController')->middleware('auth');
 Route::resource('kontak', 'KontakController')->middleware('auth');
 //Pamong
 Route::resource('kepala_asrama', 'KepalaAsramaController')->middleware('auth');
@@ -145,11 +139,11 @@ Route::post('alumniRoute/deleteAngkatan/{angkatan_id}', 'AlumniController@delete
 
 //User Biasa
 //Tentang Asrama
-Route::get('tentang_asrama/visimisi', 'TentangAsramaController@visimisi');
-Route::get('tentang_asrama/sejarah', 'TentangAsramaController@sejarah');
-Route::get('tentang_asrama/pendiri', 'TentangAsramaController@pendiri');
-Route::get('tentang_asrama/lokasi', 'TentangAsramaController@lokasi');
-Route::get('tentang_asrama/kontak', 'TentangAsramaController@kontak');
+Route::get('asrama/visimisi', 'InformasiAsramaController@visimisi');
+Route::get('asrama/sejarah', 'InformasiAsramaController@sejarah');
+Route::get('asrama/pendiri', 'InformasiAsramaController@pendiri');
+Route::get('asrama/informasi', 'InformasiAsramaController@index');
+Route::get('asrama/kontak', 'InformasiAsramaController@kontak');
 //Pamong
 Route::get('pamong/kepala_asrama', 'PamongController@kepala_asrama');
 Route::get('pamong/staf_pembina', 'PamongController@staf_pembina');
@@ -177,8 +171,8 @@ Route::get('kesiswaan/blog_siswa', 'KesiswaanController@blog_siswa');
 Route::get('kesiswaan/alumni/{id_angkatan}', 'KesiswaanController@alumni');
 Route::get('kesiswaan/alumniByAngkatan/{id_angkatan}', 'KesiswaanController@alumniByAngkatan');
 
-Route::get('depan', function () {
-    return view('layouts_blog.depan');
+Route::get('beranda', function () {
+    return view('client.beranda');
 });
 
 // ROUTES USER BIASA

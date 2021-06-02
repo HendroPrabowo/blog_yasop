@@ -17,7 +17,7 @@
 <h1>Route : {{ route('post.index') }}</h1>
 <h1>Route : {{ route('post.show', ['id' => 1]) }}</h1>
 <h1>Action : {{ action('PostController@home') }}</h1>
-<a href='{{ action("TentangAsramaController@visimisi") }}'>Link</a>
+<a href='{{ action("InformasiAsramaController@visimisi") }}'>Link</a>
 ```
 
 ##### To do

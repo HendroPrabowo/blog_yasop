@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Alumni extends Model
 {
     protected $table = "alumni";
-    protected $guarded = ['id'];
-    public $timestamps = false;
+    protected $fillable = ['nama_alumni','kutipan','angkatan_asrama','detil_kampus','gambar', 'tanggal_dibuat', 'tanggal_diubah'];
 
-    public function angkatan() {
-        return $this->belongsTo('App\NamaAngkatan', 'nama_angkatan_id');
-    }
 }

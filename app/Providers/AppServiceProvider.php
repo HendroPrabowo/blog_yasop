@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $fasilitas_menu = FasilitasMenu::all();
-        View::share('fasilitas_menu', $fasilitas_menu);
+        // $fasilitas_menu = FasilitasMenu::all();
+        // View::share('fasilitas_menu', $fasilitas_menu);
     }
 }

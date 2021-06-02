@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Alumni;
+use App\Artikel;
 
-class AlumniController extends Controller
+class ArtikelController extends Controller
 {
     public function lokasi(){
-        return view('client.informasi');
+        return view('client.artikel');
     }
 
 }
